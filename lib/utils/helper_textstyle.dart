@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
 const TextStyle boldTitleStyle = TextStyle(
-  fontSize: 24,
+  fontSize: 22,
   color: DarkText,
   fontWeight: FontWeight.bold,
   letterSpacing: 0.2,
@@ -22,8 +22,18 @@ const TextStyle H3Style = TextStyle(
 
 const TextStyle H4BtStyle = TextStyle(
   fontSize: 20,
-  color: LighColor,
+  color: BgColor,
   fontWeight: FontWeight.bold,
+);
+const TextStyle H5BtStyle = TextStyle(
+  fontSize: 20,
+  color: DarkText,
+  fontWeight: FontWeight.bold,
+);
+const TextStyle mediumStyle = TextStyle(
+  fontSize: 20,
+  color: DarkText,
+  fontWeight: FontWeight.w200,
 );
 
 const TextStyle normalStyle = TextStyle(
