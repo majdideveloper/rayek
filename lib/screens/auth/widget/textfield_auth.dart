@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class TextFieldAuth extends StatelessWidget {
   FocusNode passFocusNode;
@@ -45,3 +43,45 @@ class TextFieldAuth extends StatelessWidget {
     );
   }
 }
+
+
+  // TextFormField(
+  //                   textInputAction: TextInputAction.done,
+  //                   onEditingComplete: () {
+  //                     _submitFormOnLogin();
+  //                   },
+  //                   controller: _passTextController,
+  //                   focusNode: _passFocusNode,
+  //                   obscureText: _obscureText,
+  //                   keyboardType: TextInputType.visiblePassword,
+  //                   validator: (value) {
+  //                     if (value!.isEmpty || value.length < 7) {
+  //                       return 'Please enter a valid password';
+  //                     } else {
+  //                       return null;
+  //                     }
+  //                   },
+  //                   style: const TextStyle(color: Colors.white),
+  //                   decoration: InputDecoration(
+  //                     suffixIcon: GestureDetector(
+  //                         onTap: () {
+  //                           setState(() {
+  //                             _obscureText = !_obscureText;
+  //                           });
+  //                         },
+  //                         child: Icon(
+  //                           _obscureText
+  //                               ? Icons.visibility
+  //                               : Icons.visibility_off,
+  //                           color: Colors.white,
+  //                         )),
+  //                     hintText: 'Password',
+  //                     hintStyle: const TextStyle(color: Colors.white),
+  //                     enabledBorder: const UnderlineInputBorder(
+  //                       borderSide: BorderSide(color: Colors.white),
+  //                     ),
+  //                     focusedBorder: const UnderlineInputBorder(
+  //                       borderSide: BorderSide(color: Colors.white),
+  //                     ),
+  //                   ),
+  //                 ),

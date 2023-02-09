@@ -81,9 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     passFocusNode: _passFocusNode,
                   ),
                   smallPaddingHor,
-                  SizedBox(
-                    height: 12,
-                  ),
+
                   //Password
 
                   TextFormField(
