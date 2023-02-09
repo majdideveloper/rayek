@@ -1,7 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:rayek_v001/resources/auth_methods.dart';
 import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/utils/helper_method.dart';
+import 'package:rayek_v001/utils/utils.dart';
+import 'package:rayek_v001/widgets/custom_button.dart';
 import 'package:rayek_v001/widgets/logo_app.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -14,15 +17,59 @@ class WelcomeScreen extends StatelessWidget {
         body: Column(
           children: [
             // widgetLogo
+            smallPaddingHor,
+            largePaddingHor,
             Center(child: LogoApp()),
-            ElevatedButton(
-                onPressed: () async {
-                  goTo(context, const LoginScreen());
-                  // String resultat = await AuthMethods()
-                  //     .signUp("majdi@gmail.com", "123456", 'hana');
-                  // print(resultat);
-                },
-                child: Text('data'))
+
+            //Text welcome
+            const Text('RAYEK Social Media', style: boldTitleStyle),
+            meduimPaddingHor,
+            const Text('Keep Calm Think and Pick', style: mediumStyle),
+
+            // text account
+            Center(
+              child: RichText(
+                text: TextSpan(
+                  text: 'Already Have Account? ',
+                  style: mediumStyle,
+                  children: [
+                    TextSpan(
+                      text: 'Log\nin',
+                      style: H2Style,
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          goTo(context, const LoginScreen());
+                        },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            meduimPaddingHor,
+
+            //button signup
+            CustomButton(
+              onPressed: () async {
+                goTo(context, const LoginScreen());
+              },
+              text: 'Sign up with email',
+            ),
+            // ElevatedButton(
+            //     onPressed: () async {
+            //       goTo(context, const LoginScreen());
+            //       // String resultat = await AuthMethods()
+            //       //     .signUp("majdi@gmail.com", "123456", 'hana');
+            //       // print(resultat);
+            //     },
+            //     child: Text('data')),
+            smallPaddingHor,
+            // button google
+            GoogleButton(
+              onPressed: () async {
+                goTo(context, const LoginScreen());
+              },
+              text: 'Sign in with google',
+            ),
           ],
         ),
       ),
