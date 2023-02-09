@@ -15,10 +15,12 @@ class FooterAuth extends StatelessWidget {
     return Center(
       child: RichText(
         text: TextSpan(
-          text: text,
+         //text1
+		 text: text,
           style: smallStyle,
           children: [
             TextSpan(
+			//text2 login in
               text: bttext,
               style: H2Style,
               recognizer: TapGestureRecognizer()..onTap = onTap,
