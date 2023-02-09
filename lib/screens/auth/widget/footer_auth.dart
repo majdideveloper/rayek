@@ -4,8 +4,10 @@ import 'package:rayek_v001/utils/utils.dart';
 
 class FooterAuth extends StatelessWidget {
   final void Function() onTap;
+  final String text;
 
-  const FooterAuth({Key? key, required this.onTap}) : super(key: key);
+  const FooterAuth({Key? key, required this.onTap, required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
