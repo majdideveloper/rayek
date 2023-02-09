@@ -21,15 +21,9 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -59,5 +53,23 @@ class DefaultFirebaseOptions {
     projectId: 'rayek-001',
     authDomain: 'rayek-001.firebaseapp.com',
     storageBucket: 'rayek-001.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDfBQmlKAMdIk3tT6QW9bb16G31My0QUGA',
+    appId: '1:466245152970:android:96021a382686415dfb0433',
+    messagingSenderId: '466245152970',
+    projectId: 'rayek-001',
+    storageBucket: 'rayek-001.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDvF_vZ0EuPlY8tAOJWp1v2iMWX-vOI_gA',
+    appId: '1:466245152970:ios:13241001aed3c970fb0433',
+    messagingSenderId: '466245152970',
+    projectId: 'rayek-001',
+    storageBucket: 'rayek-001.appspot.com',
+    iosClientId: '466245152970-9q6c3jbsfo8d193b8krodrduaeeump6f.apps.googleusercontent.com',
+    iosBundleId: 'com.example.rayekV001',
   );
 }
