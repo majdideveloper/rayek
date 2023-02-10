@@ -48,13 +48,16 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               // widgetLogo
-              smallPaddingHor,
+
               largePaddingHor,
               Center(child: LogoApp()),
 
               //Text welcome
+              const Text('Welcome Back !!',
+                  textAlign: TextAlign.center, style: normalStyle),
               const Text('Login',
                   textAlign: TextAlign.center, style: boldTitleStyle),
+
               // form Sign up
               Padding(
                 padding: const EdgeInsets.all(40.0),
@@ -89,12 +92,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     // forget password
-
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text("Forget Passsword"),
-                      ],
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: TextButton(
+                          onPressed: () {
+                            // goTo(context, RegisterScreen());
+                            goTo(context, DemoClass());
+                          },
+                          child: const Text(
+                            "Forget Passsword ?",
+                            style: H2Style,
+                          )),
                     ),
                   ],
                 ),
@@ -132,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
               FooterAuth(
                   onTap: () {
                     // goTo(context, RegisterScreen());
-                    goTo(context, DemoClass());
+                    goTo(context, RegisterScreen());
                   },
                   text: 'Don\'t have Account ? ',
                   bttext: ' Sign Up')
