@@ -16,8 +16,8 @@ const TextStyle H2Style = TextStyle(
 
 const TextStyle H3Style = TextStyle(
   fontSize: 20,
-  color: LightText,
-  fontWeight: FontWeight.w100,
+  color: BtColor,
+  fontWeight: FontWeight.w600,
 );
 
 const TextStyle H4BtStyle = TextStyle(

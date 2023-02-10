@@ -53,9 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Center(child: LogoApp()),
 
               //Text welcome
-              const Text('Welcome Back !!',
-                  textAlign: TextAlign.center, style: normalStyle),
-              const Text('Login',
+              const Text('Welcome back. \nCome on in.!!',
+                  textAlign: TextAlign.center, style: H3Style),
+              const Text('Login into your Account',
                   textAlign: TextAlign.center, style: boldTitleStyle),
 
               // form Sign up
@@ -97,11 +97,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextButton(
                           onPressed: () {
                             // goTo(context, RegisterScreen());
-                            goTo(context, DemoClass());
+                            goTo(context, ForgerPassScreen());
                           },
                           child: const Text(
                             "Forget Passsword ?",
-                            style: H2Style,
+                            style: H3Style,
                           )),
                     ),
                   ],
