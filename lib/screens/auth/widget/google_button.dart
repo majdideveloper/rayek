@@ -13,17 +13,7 @@ class GoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-
-        // SignInButton(
-        //   Buttons.Google,
-        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        //   text: text,
-        //   onPressed: onPressed,
-        // );
-
-        ElevatedButton.icon(
-      icon: Icon(Icons.g_mobiledata_rounded, color: BtColor),
+    return ElevatedButton(
       style: ElevatedButton.styleFrom(
           primary: BgColor,
           minimumSize: const Size(300, 55),
@@ -31,7 +21,21 @@ class GoogleButton extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       onPressed: onPressed,
-      label: Text(text, style: H5BtStyle),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            "assets/images/google.png",
+            height: 35,
+            width: 35,
+          ),
+          smallPaddingVer,
+          Text(
+            text,
+            style: boldTitleStyle,
+          )
+        ],
+      ),
     );
   }
 }
