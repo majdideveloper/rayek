@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:rayek_v001/screens/auth/auth.dart';
+import 'package:rayek_v001/screens/auth/widget/form_text.dart';
 import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
@@ -47,33 +48,65 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               // widgetLogo
-              smallPaddingHor,
+
               largePaddingHor,
               Center(child: LogoApp()),
 
               //Text welcome
-              const Text('Login',
+              const Text('Welcome back. \nCome on in.!!',
+                  textAlign: TextAlign.center, style: H3Style),
+              const Text('Login into your Account',
                   textAlign: TextAlign.center, style: boldTitleStyle),
+
               // form Sign up
-              Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      smallPaddingHor,
-                      TextFieldAuth(
-                        controller: _emailTextController,
-                        hintText: "email",
+              Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Column(
+                  children: [
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          smallPaddingHor,
+                          TextFieldAuth(
+                            iconName: Icon(
+                              Icons.person_outline_rounded,
+                              color: BtColor,
+                            ),
+                            controller: _emailTextController,
+                            hintText: "email",
+                          ),
+                          smallPaddingHor,
+                          //password form text
+                          TextFieldAuth(
+                            iconName: Icon(
+                              Icons.lock_outline_rounded,
+                              color: BtColor,
+                            ),
+                            controller: _passTextController,
+                            hintText: "password",
+                            isPassword: true,
+                          ),
+                          smallPaddingHor,
+                        ],
                       ),
-                      smallPaddingHor,
-                      TextFieldAuth(
-                        controller: _passTextController,
-                        hintText: "password",
-                        isPassword: true,
-                      ),
-                      smallPaddingHor,
-                      smallPaddingHor,
-                    ],
-                  )),
+                    ),
+                    // forget password
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: TextButton(
+                          onPressed: () {
+                            // goTo(context, RegisterScreen());
+                            goTo(context, ForgerPassScreen());
+                          },
+                          child: const Text(
+                            "Forget Passsword ?",
+                            style: H3Style,
+                          )),
+                    ),
+                  ],
+                ),
+              ),
 
               meduimPaddingHor,
 
@@ -106,10 +139,11 @@ class _LoginScreenState extends State<LoginScreen> {
               smallPaddingHor,
               FooterAuth(
                   onTap: () {
+                    // goTo(context, RegisterScreen());
                     goTo(context, RegisterScreen());
                   },
-                  text: 'Don\'t have Account',
-                  bttext: 'Sign UP')
+                  text: 'Don\'t have Account ? ',
+                  bttext: ' Sign Up')
               // button google
             ],
           ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:rayek_v001/screens/auth/auth.dart';
-import 'package:rayek_v001/screens/auth/reset_pass_screen.dart';
 import 'package:rayek_v001/screens/auth/widget/form_text.dart';
 import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/utils/utils.dart';
@@ -10,15 +9,16 @@ import '../../resources/auth_methods.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/logo_app.dart';
 
-class ForgerPassScreen extends StatefulWidget {
-  const ForgerPassScreen({super.key});
+class ResetPassScreen extends StatefulWidget {
+  const ResetPassScreen({super.key});
 
   @override
-  State<ForgerPassScreen> createState() => _ForgerPassScreenState();
+  State<ResetPassScreen> createState() => _ResetPassScreenState();
 }
 
-class _ForgerPassScreenState extends State<ForgerPassScreen> {
-  final _emailTextController = TextEditingController();
+class _ResetPassScreenState extends State<ResetPassScreen> {
+  final _passTextController = TextEditingController();
+  final _confPassTextController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -26,7 +26,7 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
 
   @override
   void dispose() {
-    _emailTextController.dispose();
+    _passTextController.dispose();
     super.dispose();
   }
 
@@ -51,15 +51,8 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
               Center(child: LogoApp()),
 
               //Text welcome
-              const Text('Forgot Password  ?',
+              const Text('Reset Password  ?',
                   textAlign: TextAlign.center, style: boldTitleStyle),
-              const Padding(
-                padding: EdgeInsets.only(left: 40, right: 50),
-                child: Text(
-                  'Don\'t worry!! It happens.Please enter the adress associated with your account.',
-                  style: mediumStyle,
-                ),
-              ),
 
               // form Sign up
               Padding(
@@ -72,12 +65,23 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
                         children: [
                           smallPaddingHor,
                           TextFieldAuth(
+                            isPassword: true,
                             iconName: Icon(
-                              Icons.person_outline_rounded,
+                              Icons.lock_outline_rounded,
                               color: BtColor,
                             ),
-                            controller: _emailTextController,
-                            hintText: "email",
+                            controller: _passTextController,
+                            hintText: "New Password",
+                          ),
+                          smallPaddingHor,
+                          TextFieldAuth(
+                            isPassword: true,
+                            iconName: Icon(
+                              Icons.lock_outline_rounded,
+                              color: BtColor,
+                            ),
+                            controller: _confPassTextController,
+                            hintText: "confirme new Password",
                           ),
                         ],
                       ),
@@ -91,10 +95,8 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
 
               //button signup
               CustomButton(
-                onPressed: (() {
-                  goTo(context, ResetPassScreen());
-                }),
-                text: 'Reset Password',
+                onPressed: (() {}),
+                text: 'Submit',
                 isLoading: isLoading,
               ),
             ],

@@ -15,7 +15,7 @@ class GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: BgColor,
+          primary: BgColor,
           minimumSize: const Size(300, 55),
           side: const BorderSide(width: 1, color: BtColor),
           shape:
@@ -24,8 +24,8 @@ class GoogleButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.network(
-            'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png',
+          Image.asset(
+            "assets/images/google.png",
             height: 35,
             width: 35,
           ),
