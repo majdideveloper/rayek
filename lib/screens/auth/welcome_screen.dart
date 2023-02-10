@@ -29,6 +29,7 @@ class WelcomeScreen extends StatelessWidget {
             // text account
             Center(
               child: RichText(
+                textAlign: TextAlign.center,
                 text: TextSpan(
                   text: 'Already Have Account? ',
                   style: mediumStyle,
@@ -50,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
             //button signup
             CustomButton(
               onPressed: () async {
-                goTo(context, const LoginScreen());
+                goTo(context, const RegisterScreen());
               },
               text: 'Sign up with email',
             ),

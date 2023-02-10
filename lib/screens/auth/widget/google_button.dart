@@ -13,25 +13,29 @@ class GoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-
-        // SignInButton(
-        //   Buttons.Google,
-        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        //   text: text,
-        //   onPressed: onPressed,
-        // );
-
-        ElevatedButton.icon(
-      icon: Icon(Icons.g_mobiledata_rounded, color: BtColor),
+    return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          primary: BgColor,
+          backgroundColor: BgColor,
           minimumSize: const Size(300, 55),
           side: const BorderSide(width: 1, color: BtColor),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       onPressed: onPressed,
-      label: Text(text, style: H5BtStyle),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.network(
+            'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png',
+            height: 35,
+            width: 35,
+          ),
+          smallPaddingVer,
+          Text(
+            text,
+            style: boldTitleStyle,
+          )
+        ],
+      ),
     );
   }
 }

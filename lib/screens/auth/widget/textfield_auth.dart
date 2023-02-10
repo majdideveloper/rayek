@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 
 class TextFieldAuth extends StatelessWidget {
-  FocusNode passFocusNode;
   TextEditingController controller;
   String hintText;
   String? Function(String?)? validator;
+  bool? isPassword;
   TextFieldAuth({
     Key? key,
-    required this.passFocusNode,
     required this.controller,
     required this.hintText,
     this.validator,
+    this.isPassword = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       textInputAction: TextInputAction.next,
-      onEditingComplete: () =>
-          FocusScope.of(context).requestFocus(passFocusNode),
+
       controller: controller,
       keyboardType: TextInputType.emailAddress,
+      obscureText: isPassword!,
+
       validator: validator,
       // validator: (value) {
       //   if (value!.isEmpty || !value.contains('@')) {

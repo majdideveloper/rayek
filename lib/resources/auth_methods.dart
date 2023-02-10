@@ -7,6 +7,7 @@ class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+// Sign Up
   Future<String> signUp(String email, String password, String username) async {
     String resultat = "";
 
@@ -42,5 +43,39 @@ class AuthMethods {
       print(e);
     }
     return resultat;
+  }
+
+  Future<String> logIn(String email, String password) async {
+    String response = '';
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      response = 'succes';
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+    return response;
+  }
+
+  // Sign out
+  signOut() async {
+    await _auth.signOut();
+  }
+
+  //get information user
+  Future<UserModel> getUserDetails() async {
+    // garantie user moujoud
+    User currentUser = _auth.currentUser!;
+
+    DocumentSnapshot documentSnapshot =
+        await _firestore.collection('users').doc(currentUser.uid).get();
+
+    return UserModel.fromSnap(documentSnapshot);
   }
 }

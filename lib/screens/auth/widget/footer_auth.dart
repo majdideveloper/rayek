@@ -16,11 +16,12 @@ class FooterAuth extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: text,
-          style: smallStyle,
+          style: normalStyle.copyWith(fontWeight: FontWeight.w800),
           children: [
             TextSpan(
               text: bttext,
-              style: H2Style,
+              style: normalStyle.copyWith(
+                  color: BtColor, fontWeight: FontWeight.w600),
               recognizer: TapGestureRecognizer()..onTap = onTap,
             ),
           ],
