@@ -16,8 +16,8 @@ const TextStyle H2Style = TextStyle(
 
 const TextStyle H3Style = TextStyle(
   fontSize: 20,
-  color: LightText,
-  fontWeight: FontWeight.w100,
+  color: BtColor,
+  fontWeight: FontWeight.w600,
 );
 
 const TextStyle H4BtStyle = TextStyle(
@@ -33,13 +33,13 @@ const TextStyle H5BtStyle = TextStyle(
 const TextStyle mediumStyle = TextStyle(
   fontSize: 20,
   color: DarkText,
-  fontWeight: FontWeight.w200,
+  fontWeight: FontWeight.w500,
 );
 
 const TextStyle normalStyle = TextStyle(
   fontSize: 18,
   color: DarkText,
-  fontWeight: FontWeight.w100,
+  fontWeight: FontWeight.w600,
 );
 
 const TextStyle smallStyle = TextStyle(

@@ -32,44 +32,70 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             children: [
               // widgetLogo
-              smallPaddingHor,
-              largePaddingHor,
-              Center(child: LogoApp()),
 
+              Center(child: LogoApp()),
               //Text welcome
               const Text('Create Account\n with email',
                   textAlign: TextAlign.center, style: boldTitleStyle),
               // form Sign up
-              Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextFieldAuth(
-                        controller: _userNameController,
-                        hintText: "UserName",
-                      ),
-                      smallPaddingHor,
-                      TextFieldAuth(
-                        controller: _emailController,
-                        hintText: "email",
-                      ),
-                      smallPaddingHor,
-                      TextFieldAuth(
-                        controller: _passwordController,
-                        hintText: "password",
-                        isPassword: true,
-                      ),
-                      smallPaddingHor,
-                      TextFieldAuth(
-                        controller: _passwordConformationController,
-                        hintText: "password Coniformation",
-                        isPassword: true,
-                      ),
-                      smallPaddingHor,
-                    ],
-                  )),
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFieldAuth(
+                          iconName: Icon(
+                            Icons.person_outline_rounded,
+                            color: BtColor,
+                          ),
+                          controller: _userNameController,
+                          hintText: "UserName",
+                        ),
+                        smallPaddingHor,
+                        //email form
+                        TextFieldAuth(
+                          iconName: Icon(
+                            Icons.email_outlined,
+                            color: BtColor,
+                          ),
+                          controller: _emailController,
+                          hintText: "email",
+                          validator: (value) {
+                            if (value!.isEmpty || !value.contains('@')) {
+                              return 'Please enter a valid email address';
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                        smallPaddingHor,
 
-              meduimPaddingHor,
+                        //password form
+                        TextFieldAuth(
+                          iconName: Icon(
+                            Icons.lock_outline_rounded,
+                            color: BtColor,
+                          ),
+                          controller: _passwordController,
+                          hintText: "password",
+                          isPassword: true,
+                        ),
+                        smallPaddingHor,
+                        TextFieldAuth(
+                          iconName: Icon(
+                            Icons.lock_outline_rounded,
+                            color: BtColor,
+                          ),
+                          controller: _passwordConformationController,
+                          hintText: "Confirm password",
+                          isPassword: true,
+                        ),
+                      ],
+                    )),
+              ),
+
+              smallPaddingHor,
 
               //button signup
               CustomButton(
@@ -95,7 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     });
                   }
                 },
-                text: 'Sign up with email',
+                text: 'Create Account ',
                 isLoading: isLaoding,
               ),
 
@@ -105,8 +131,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onTap: () {
                     goTo(context, LoginScreen());
                   },
-                  text: 'create your  Account',
-                  bttext: 'Sign in')
+                  text: 'Already have Account? ',
+                  bttext: 'Log in')
             ],
           ),
         ),
