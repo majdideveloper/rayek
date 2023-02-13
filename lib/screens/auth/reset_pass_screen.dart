@@ -56,7 +56,8 @@ class _ResetPassScreenState extends State<ResetPassScreen> {
 
               // form Sign up
               Padding(
-                padding: const EdgeInsets.all(40.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Column(
                   children: [
                     Form(

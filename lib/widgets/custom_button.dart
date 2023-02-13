@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       onPressed: onPressed,
       child: isLoading!
-          ? CircularProgressIndicator(
+          ? const CircularProgressIndicator(
               color: Colors.white,
             )
           : Text(text, style: H4BtStyle),

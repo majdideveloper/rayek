@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               // widgetLogo
 
-              largePaddingHor,
+              meduimPaddingHor,
               Center(child: LogoApp()),
 
               //Text welcome
@@ -60,7 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // form Sign up
               Padding(
-                padding: const EdgeInsets.all(40.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Column(
                   children: [
                     Form(
@@ -75,35 +76,55 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             controller: _emailTextController,
                             hintText: "email",
+                            validator: (value) {
+                              if (value!.isEmpty ||
+                                  (!value.contains('@') &&
+                                      !value.contains('.'))) {
+                                return 'Please enter a valid email address';
+                              } else {
+                                return null;
+                              }
+                            },
                           ),
                           smallPaddingHor,
                           //password form text
                           TextFieldAuth(
-                            iconName: Icon(
+                            iconName: const Icon(
+                              Icons.lock_outline_rounded,
+                              color: BtColor,
+                            ),
+                            suffixIconName: const Icon(
                               Icons.lock_outline_rounded,
                               color: BtColor,
                             ),
                             controller: _passTextController,
                             hintText: "password",
                             isPassword: true,
+                            viewSuffixPassword: true,
+                            validator: (value) {
+                              if (value!.length < 6) {
+                                return 'Please enter a valid email address';
+                              } else {
+                                return null;
+                              }
+                            },
                           ),
-                          smallPaddingHor,
                         ],
                       ),
                     ),
                     // forget password
                     Align(
-                      alignment: Alignment.topRight,
-                      child: TextButton(
-                          onPressed: () {
+                        alignment: Alignment.topRight,
+                        child: InkWell(
+                          onTap: () {
                             // goTo(context, RegisterScreen());
                             goTo(context, ForgerPassScreen());
                           },
                           child: const Text(
                             "Forget Passsword ?",
-                            style: H3Style,
-                          )),
-                    ),
+                            style: H2Style,
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -111,29 +132,41 @@ class _LoginScreenState extends State<LoginScreen> {
               meduimPaddingHor,
 
               //button signup
+
               CustomButton(
                 onPressed: () async {
-                  setState(() {
-                    isLoading = true;
-                  });
-
-                  String responce = await AuthMethods().logIn(
-                      _emailTextController.text, _passTextController.text);
-
-                  if (responce == 'succes') {
+                  bool validate = _formKey.currentState!.validate();
+                  if (validate) {
                     setState(() {
-                      isLoading = false;
+                      isLoading = true;
                     });
 
-                    goTo(context, HomeScreen());
-                  } else {
-                    setState(() {
-                      isLoading = false;
-                    });
+                    String responce = await AuthMethods().logIn(
+                        _emailTextController.text, _passTextController.text);
+
+                    if (responce == 'succes') {
+                      setState(() {
+                        isLoading = false;
+                      });
+
+                      goToAndForget(context, HomeScreen());
+                    } else {
+                      setState(() {
+                        isLoading = false;
+                        if (responce == "") responce = "something errorrrr";
+                        print(responce);
+                      });
+                      showSnackBar(context, responce);
+                    }
                   }
                 },
                 text: 'Log in',
                 isLoading: isLoading,
+              ),
+              smallPaddingHor,
+              GoogleButton(
+                text: "Login In with Google",
+                onPressed: () {},
               ),
 
               smallPaddingHor,

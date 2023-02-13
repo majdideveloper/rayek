@@ -63,7 +63,8 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
 
               // form Sign up
               Padding(
-                padding: const EdgeInsets.all(40.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Column(
                   children: [
                     Form(
@@ -91,9 +92,13 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
 
               //button signup
               CustomButton(
-                onPressed: (() {
-                  goTo(context, ResetPassScreen());
-                }),
+                onPressed: () async {
+                  String responce = await AuthMethods()
+                      .resetPassword(_emailTextController.text.trim());
+
+                  if (responce == 'succes') responce = 'verfy your email';
+                  showSnackBar(context, responce);
+                },
                 text: 'Reset Password',
                 isLoading: isLoading,
               ),
