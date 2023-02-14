@@ -35,9 +35,9 @@ class AuthMethods {
       resultat = 'succes';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        return ('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        return ('The account already exists for that email.');
       }
     } catch (e) {
       print(e);
@@ -56,8 +56,10 @@ class AuthMethods {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
+        return ('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
+        return ('Wrong password provided for that user.');
       }
     }
     return response;
@@ -77,5 +79,20 @@ class AuthMethods {
         await _firestore.collection('users').doc(currentUser.uid).get();
 
     return UserModel.fromSnap(documentSnapshot);
+  }
+
+  // forget Password
+
+  Future<String> resetPassword(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return "succes";
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        return ('No user found for that email.');
+      } else {
+        return ('An error occurred while resetting the password: $e');
+      }
+    }
   }
 }

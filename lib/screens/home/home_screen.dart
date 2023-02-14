@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rayek_v001/resources/auth_methods.dart';
+import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/profile/widget/profile_image.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
@@ -10,7 +13,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: FaIcon(FontAwesomeIcons.penClip),
+        onPressed: () {},
+      ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: Text(
@@ -19,15 +27,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           TextButton(
-              onPressed: (() {
-                goTo(
-                    context,
-                    ProfileWidget(
-                        imagePath:
-                            "data:image/jpeg;base64,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",
-                        onClicked: (() {})));
-              }),
-              child: Text("profile"))
+            onPressed: () {
+              AuthMethods().signOut();
+              goToAndForget(context, const WelcomeScreen());
+            },
+            child: Text("log out"),
+          ),
         ],
       ),
     );

@@ -39,7 +39,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textAlign: TextAlign.center, style: boldTitleStyle),
               // form Sign up
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Form(
                     key: _formKey,
                     child: Column(
@@ -51,6 +52,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           controller: _userNameController,
                           hintText: "UserName",
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter user Name';
+                            } else {
+                              return null;
+                            }
+                          },
                         ),
                         smallPaddingHor,
                         //email form
@@ -62,7 +70,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: _emailController,
                           hintText: "email",
                           validator: (value) {
-                            if (value!.isEmpty || !value.contains('@')) {
+                            if (value!.isEmpty ||
+                                (!value.contains('@') &&
+                                    !value.contains('.'))) {
                               return 'Please enter a valid email address';
                             } else {
                               return null;
@@ -80,6 +90,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: _passwordController,
                           hintText: "password",
                           isPassword: true,
+                          viewSuffixPassword: true,
+                          validator: (value) {
+                            if (value!.length < 6) {
+                              return 'Please enter a valid password';
+                            } else {
+                              return null;
+                            }
+                          },
                         ),
                         smallPaddingHor,
                         TextFieldAuth(
@@ -90,6 +108,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: _passwordConformationController,
                           hintText: "Confirm password",
                           isPassword: true,
+                          viewSuffixPassword: true,
+                          validator: (value) {
+                            if (_passwordController.text !=
+                                _passwordConformationController.text) {
+                              return 'Please enter a valid confirmation password';
+                            } else {
+                              return null;
+                            }
+                          },
                         ),
                       ],
                     )),
@@ -100,25 +127,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
               //button signup
               CustomButton(
                 onPressed: () async {
-                  setState(() {
-                    isLaoding = true;
-                  });
+                  bool validate = _formKey.currentState!.validate();
 
-                  String responce = await AuthMethods().signUp(
-                      _emailController.text,
-                      _passwordController.text,
-                      _userNameController.text);
-
-                  if (responce == 'succes') {
+                  if (validate) {
                     setState(() {
-                      isLaoding = false;
+                      isLaoding = true;
                     });
 
-                    goTo(context, LoginScreen());
-                  } else {
-                    setState(() {
-                      isLaoding = false;
-                    });
+                    String responce = await AuthMethods().signUp(
+                        _emailController.text,
+                        _passwordController.text,
+                        _userNameController.text);
+
+                    if (responce == 'succes') {
+                      setState(() {
+                        isLaoding = false;
+                      });
+
+                      goTo(context, LoginScreen());
+                    } else {
+                      setState(() {
+                        isLaoding = false;
+                        if (responce == "") responce = "something errorrrr";
+                      });
+
+                      showSnackBar(context, responce);
+                    }
                   }
                 },
                 text: 'Create Account ',
