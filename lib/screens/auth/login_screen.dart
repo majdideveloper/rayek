@@ -120,9 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             // goTo(context, RegisterScreen());
                             goTo(context, ForgerPassScreen());
                           },
-                          child: const Text(
+                          child: Text(
                             "Forget Passsword ?",
-                            style: H2Style,
+                            style: H2Style.copyWith(fontSize: 16),
                           ),
                         )),
                   ],
@@ -164,10 +164,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 isLoading: isLoading,
               ),
               smallPaddingHor,
-              GoogleButton(
-                text: "Login In with Google",
-                onPressed: () {},
-              ),
 
               smallPaddingHor,
               FooterAuth(

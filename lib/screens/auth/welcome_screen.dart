@@ -46,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            meduimPaddingHor,
+            largePaddingHor,
 
             //button signup
             CustomButton(
@@ -65,12 +65,6 @@ class WelcomeScreen extends StatelessWidget {
             //     child: Text('data')),
             smallPaddingHor,
             // button google
-            GoogleButton(
-              onPressed: () async {
-                goTo(context, const LoginScreen());
-              },
-              text: 'Sign in with google',
-            ),
           ],
         ),
       ),

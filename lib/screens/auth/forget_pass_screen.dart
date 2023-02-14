@@ -79,6 +79,15 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
                             ),
                             controller: _emailTextController,
                             hintText: "email",
+                            validator: (value) {
+                              if (value!.isEmpty ||
+                                  (!value.contains('@') &&
+                                      !value.contains('.'))) {
+                                return 'Please enter a valid email address';
+                              } else {
+                                return null;
+                              }
+                            },
                           ),
                         ],
                       ),
@@ -93,11 +102,14 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
               //button signup
               CustomButton(
                 onPressed: () async {
-                  String responce = await AuthMethods()
-                      .resetPassword(_emailTextController.text.trim());
+                  bool validate = _formKey.currentState!.validate();
+                  if (validate) {
+                    String responce = await AuthMethods()
+                        .resetPassword(_emailTextController.text.trim());
 
-                  if (responce == 'succes') responce = 'verfy your email';
-                  showSnackBar(context, responce);
+                    if (responce == 'succes') responce = 'verfy your email';
+                    showSnackBar(context, responce);
+                  }
                 },
                 text: 'Reset Password',
                 isLoading: isLoading,

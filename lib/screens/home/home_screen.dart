@@ -7,6 +7,8 @@ import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/profile/widget/profile_image.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
+import '../profile/profile_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -20,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
+          const Center(
             child: Text(
               'home',
               style: boldTitleStyle,
@@ -28,10 +30,16 @@ class HomeScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
+              goTo(context, const ProfileScreen());
+            },
+            child: const Text("profile"),
+          ),
+          TextButton(
+            onPressed: () {
               AuthMethods().signOut();
               goToAndForget(context, const WelcomeScreen());
             },
-            child: Text("log out"),
+            child: const Text("log out"),
           ),
         ],
       ),
