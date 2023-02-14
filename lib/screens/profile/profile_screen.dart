@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(width: 3, color: Colors.blue),
+                            border: Border.all(width: 3, color: BtColor),
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.black45,
@@ -107,21 +107,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Text(
                         "Posts",
-                        style: mediumStyle,
+                        style: LargeStyle,
                       ),
-                      Text("123", style: mediumStyle),
+                      Text("123", style: LargeStyle),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("Followers", style: mediumStyle),
-                      Text("1452", style: mediumStyle),
+                      Text("Followers", style: LargeStyle),
+                      Text("1452", style: LargeStyle),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("Follows", style: mediumStyle),
-                      Text("7455", style: mediumStyle),
+                      Text("Follows", style: LargeStyle),
+                      Text("7455", style: LargeStyle),
                     ],
                   )
                 ],

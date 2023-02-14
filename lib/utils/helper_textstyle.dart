@@ -35,7 +35,11 @@ const TextStyle mediumStyle = TextStyle(
   color: DarkText,
   fontWeight: FontWeight.w500,
 );
-
+const TextStyle LargeStyle = TextStyle(
+  fontSize: 20,
+  color: DarkText,
+  fontWeight: FontWeight.bold,
+);
 const TextStyle normalStyle = TextStyle(
   fontSize: 18,
   color: DarkText,
