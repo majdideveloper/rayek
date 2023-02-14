@@ -16,7 +16,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: FaIcon(FontAwesomeIcons.penClip),
+        child: FaIcon(
+          FontAwesomeIcons.penClip,
+          color: BtColor,
+        ),
         onPressed: () {},
       ),
       body: Column(

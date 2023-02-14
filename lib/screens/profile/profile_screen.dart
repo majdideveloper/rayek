@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ClipPath(
                     clipper: CurveClipper(),
                     child: Container(
-                      color: Colors.blue,
+                      color: BtColor,
                       height: 200,
                     ),
                   ),
@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.pop(context);
                       },
                       icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
+                      color: BgColor,
                     ),
                   ),
                   //3rd child phot pprofile
@@ -77,14 +77,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 40,
                               decoration: BoxDecoration(
                                 color: Colors.grey[200],
-                                border:
-                                    Border.all(width: 0.7, color: Colors.blue),
+                                border: Border.all(width: 0.7, color: BtColor),
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(Icons.add_a_photo_rounded),
-                                color: Colors.blue,
+                                color: BtColor,
                                 //iconSize: 22,
                               ),
                             )),
@@ -95,7 +94,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               smallPaddingHor,
               Center(
-                child: Text("userName"),
+                child: Text(
+                  "User Name",
+                  style: boldTitleStyle,
+                ),
               ),
               smallPaddingHor,
               Row(
@@ -103,20 +105,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Column(
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text(
+                        "Posts",
+                        style: mediumStyle,
+                      ),
+                      Text("123", style: mediumStyle),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text("Followers", style: mediumStyle),
+                      Text("1452", style: mediumStyle),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text("Follows", style: mediumStyle),
+                      Text("7455", style: mediumStyle),
                     ],
                   )
                 ],
