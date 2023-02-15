@@ -5,9 +5,6 @@ import 'package:rayek_v001/providers/app_provider.dart';
 import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/screens/profile/profile_screen.dart';
 
-import '../screens/addPost/add_post_screen.dart';
-import '../screens/search/search_screen.dart';
-
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
 
