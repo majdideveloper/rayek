@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ClipPath(
                     clipper: CurveClipper(),
                     child: Container(
-                      color: Colors.blue,
+                      color: BtColor,
                       height: 200,
                     ),
                   ),
@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.pop(context);
                       },
                       icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
+                      color: BgColor,
                     ),
                   ),
                   //3rd child phot pprofile
@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(width: 3, color: Colors.blue),
+                            border: Border.all(width: 3, color: BtColor),
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.black45,
@@ -77,14 +77,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 40,
                               decoration: BoxDecoration(
                                 color: Colors.grey[200],
-                                border:
-                                    Border.all(width: 0.7, color: Colors.blue),
+                                border: Border.all(width: 0.7, color: BtColor),
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(Icons.add_a_photo_rounded),
-                                color: Colors.blue,
+                                color: BtColor,
                                 //iconSize: 22,
                               ),
                             )),
@@ -96,7 +95,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               //second part
               smallPaddingHor,
               Center(
-                child: Text("userName"),
+                child: Text(
+                  "User Name",
+                  style: boldTitleStyle,
+                ),
               ),
               smallPaddingHor,
               Row(
@@ -104,20 +106,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Column(
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text(
+                        "Posts",
+                        style: LargeStyle,
+                      ),
+                      Text("123", style: LargeStyle),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text("Followers", style: LargeStyle),
+                      Text("1452", style: LargeStyle),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text("Follows", style: LargeStyle),
+                      Text("7455", style: LargeStyle),
                     ],
                   )
                 ],

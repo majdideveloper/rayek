@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rayek_v001/resources/auth_methods.dart';
 import 'package:rayek_v001/screens/auth/auth.dart';
+import 'package:rayek_v001/screens/home/widget/categorie_widget.dart';
 
 import 'package:rayek_v001/utils/utils.dart';
 
@@ -16,12 +17,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: FaIcon(FontAwesomeIcons.penClip),
+        child: FaIcon(
+          FontAwesomeIcons.penClip,
+          color: BtColor,
+        ),
         onPressed: () {},
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          const CategorieWidgts(),
           const Center(
             child: Text(
               'home',
