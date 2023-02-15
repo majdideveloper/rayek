@@ -93,6 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
+              //second part
               smallPaddingHor,
               Center(
                 child: Text("userName"),
