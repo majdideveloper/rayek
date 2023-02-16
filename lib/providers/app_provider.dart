@@ -12,7 +12,7 @@ class AppProvider with ChangeNotifier {
     const HomeScreen(),
     const SearchScreen(),
     const AddPostScreen(),
-    const ProfileScreen(),
+    ProfileScreen(),
   ];
 
   int get index => _indexScreen;

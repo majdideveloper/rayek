@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rayek_v001/providers/user_provider.dart';
 
 import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/auth/widget/form_text.dart';
 import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/utils/utils.dart';
+import 'package:rayek_v001/widgets/bottom_bar.dart';
 
 import '../../resources/auth_methods.dart';
 import '../../widgets/custom_button.dart';
@@ -143,13 +146,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     String responce = await AuthMethods().logIn(
                         _emailTextController.text, _passTextController.text);
+                    await context.read<UserProvider>().refreshUser();
 
                     if (responce == 'succes') {
                       setState(() {
                         isLoading = false;
                       });
 
-                      goToAndForget(context, HomeScreen());
+                      goToAndForget(context, BottomBar());
                     } else {
                       setState(() {
                         isLoading = false;

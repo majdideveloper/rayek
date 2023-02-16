@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rayek_v001/providers/app_provider.dart';
+import 'package:rayek_v001/providers/user_provider.dart';
 import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/utils/palette.dart';
 import 'package:rayek_v001/widgets/bottom_bar.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) {
           return AppProvider();
         }),
+        ChangeNotifierProvider(create: (_) {
+          return UserProvider();
+        }),
       ],
       child: MaterialApp(
         title: 'Rayek Social',
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: BgColor,
         ),
         debugShowCheckedModeBanner: false,
-        home: const BottomBar(),
+        home: const WelcomeScreen(),
       ),
     );
   }

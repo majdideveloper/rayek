@@ -28,12 +28,6 @@ class HomeScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              goTo(context, const ProfileScreen());
-            },
-            child: const Text("profile"),
-          ),
-          TextButton(
-            onPressed: () {
               AuthMethods().signOut();
               goToAndForget(context, const WelcomeScreen());
             },
