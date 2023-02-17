@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rayek_v001/screens/addPost/add_new_post.dart';
 
 import '../screens/addPost/add_post_screen.dart';
 import '../screens/home/home_screen.dart';
@@ -11,7 +12,8 @@ class AppProvider with ChangeNotifier {
   final List<Widget> listScreen = [
     const HomeScreen(),
     const SearchScreen(),
-    const AddPostScreen(),
+    const AddNewPost(),
+    //const AddPostScreen(),
     ProfileScreen(),
   ];
 
