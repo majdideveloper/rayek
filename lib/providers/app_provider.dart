@@ -21,4 +21,25 @@ class AppProvider with ChangeNotifier {
     _indexScreen = value;
     notifyListeners();
   }
+
+  //list for responces user
+  List<String> _responces = [];
+  int get lengthList => _responces.length;
+
+  String getValue(int index) => _responces[index];
+
+  addResponce(String value) {
+    _responces.add(value);
+    notifyListeners();
+  }
+
+  removeResponce(int index) {
+    _responces.removeAt(index);
+    notifyListeners();
+  }
+
+  clearListResponce() {
+    _responces.clear();
+    notifyListeners();
+  }
 }

@@ -42,6 +42,7 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   google_sign_in: ^5.4.4
   provider:
+  image_picker: ^0.8.6+1
 
 
 dev_dependencies:

@@ -82,7 +82,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Expanded(
+                    : Flexible(
                         child: ListView.separated(
                         separatorBuilder: ((context, index) => smallPaddingHor),
                         itemCount: snapshot.data!.docs.length,
@@ -105,19 +105,32 @@ class _SearchScreenState extends State<SearchScreen> {
                                   backgroundImage: NetworkImage(user.photoUrl),
                                 ),
                                 title: Text(user.username),
+                                subtitle: Text(user.email),
                               ),
-                            );
-                          } else if (user.username
-                              .toLowerCase()
-                              .contains(textSearch.toLowerCase())) {
-                            return ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(user.photoUrl),
-                              ),
-                              title: Text(user.username),
                             );
                           }
-                          return Container();
+                          if (user.username
+                              .toLowerCase()
+                              .startsWith(textSearch.toLowerCase())) {
+                            return InkWell(
+                              onTap: () {
+                                goTo(
+                                    context,
+                                    ProfileScreen(
+                                      user: UserModel.fromSnap(
+                                          snapshot.data!.docs[index]),
+                                    ));
+                              },
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(user.photoUrl),
+                                ),
+                                title: Text(user.username),
+                                subtitle: Text(user.email),
+                              ),
+                            );
+                          }
+                          return SizedBox();
                         }),
                       ));
               }))

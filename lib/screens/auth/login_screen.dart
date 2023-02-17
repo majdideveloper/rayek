@@ -146,13 +146,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     String responce = await AuthMethods().logIn(
                         _emailTextController.text, _passTextController.text);
-                    await context.read<UserProvider>().refreshUser();
 
                     if (responce == 'succes') {
                       setState(() {
                         isLoading = false;
                       });
-
+                      await context.read<UserProvider>().refreshUser();
                       goToAndForget(context, BottomBar());
                     } else {
                       setState(() {
