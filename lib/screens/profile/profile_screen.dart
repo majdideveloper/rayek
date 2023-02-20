@@ -12,6 +12,7 @@ import 'package:rayek_v001/providers/user_provider.dart';
 import 'package:rayek_v001/resources/storage_methods.dart';
 import 'package:rayek_v001/screens/profile/widget/curver_clipper.dart';
 import 'package:rayek_v001/utils/utils.dart';
+import 'package:rayek_v001/widgets/logout_buttom.dart';
 
 import '../../models/user.dart';
 import '../../resources/auth_methods.dart';
@@ -182,17 +183,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 // if current usser log out
                 // else follow unfflow button
+                smallPaddingHor,
                 widget.user == null
-                    ? TextButton(
+                    ? LogOutButton(
                         onPressed: () {
                           AuthMethods().signOut();
                           goToAndForget(context, const WelcomeScreen());
                         },
-                        child: const Text("log out"),
+                        text: 'LogOut',
+                        icon: Icon(
+                          Icons.logout_rounded,
+                          color: BtColor,
+                        ),
                       )
-                    : TextButton(
+                    : LogOutButton(
                         onPressed: () {},
-                        child: const Text("Follow"),
+                        text: 'Follow',
+                        icon: Icon(
+                          Icons.favorite_border,
+                          color: BtColor,
+                        ),
                       ),
               ],
             ),
