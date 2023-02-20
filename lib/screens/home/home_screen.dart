@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
           StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("questions")
+                  .orderBy('datePublished', descending: true)
                   .snapshots(),
               builder: ((context, snapshot) {
                 return (snapshot.connectionState == ConnectionState.waiting)
@@ -46,14 +47,6 @@ class HomeScreen extends StatelessWidget {
                               return PostWidget(
                                 question: question,
                               );
-                              // ListTile(
-                              //   leading: CircleAvatar(
-                              //     backgroundImage:
-                              //         NetworkImage(question.postUrl),
-                              //   ),
-                              //   title: Text(question.question),
-                              //   subtitle: Text(question.username),
-                              // );
                             })));
               })),
         ],
