@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -13,9 +14,11 @@ import 'package:rayek_v001/resources/storage_methods.dart';
 import 'package:rayek_v001/screens/profile/widget/curver_clipper.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
+import '../../models/question.dart';
 import '../../models/user.dart';
 import '../../resources/auth_methods.dart';
 import '../auth/welcome_screen.dart';
+import '../home/widget/post_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
   UserModel? user;
@@ -194,6 +197,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onPressed: () {},
                         child: const Text("Follow"),
                       ),
+
+                // last party of screen listView all Posts of user
+                const Divider(
+                  thickness: 3,
+                  endIndent: 10,
+                  indent: 10,
+                  color: BtColor,
+                ),
+                const Center(
+                  child: Text(
+                    "Posts",
+                    style: boldTitleStyle,
+                  ),
+                ),
+                const Divider(
+                  thickness: 3,
+                  endIndent: 10,
+                  indent: 10,
+                  color: BtColor,
+                ),
+                // last part listView with streamBuilder
+                StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("questions")
+                        .where("username",
+                            isEqualTo: widget.user == null
+                                ? provider.getUser.username
+                                : widget.user!.username)
+                        .snapshots(),
+                    builder: ((context, snapshot) {
+                      return (snapshot.connectionState ==
+                              ConnectionState.waiting)
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : SizedBox(
+                              height: 500,
+                              child: ListView.separated(
+                                  separatorBuilder: ((context, index) =>
+                                      smallPaddingHor),
+                                  itemCount: snapshot.data!.docs.length,
+                                  itemBuilder: ((context, index) {
+                                    PostQuestion question =
+                                        PostQuestion.fromSnap(
+                                            snapshot.data!.docs[index]);
+
+                                    return PostWidget(
+                                      question: question,
+                                    );
+                                  })));
+                    })),
               ],
             ),
           ),
