@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -156,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      children: [
+                      children: const [
                         Text(
                           "Posts",
                           style: LargeStyle,
@@ -165,14 +166,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                     Column(
-                      children: [
+                      children: const [
                         Text("Followers", style: LargeStyle),
                         Text("1452", style: LargeStyle),
                       ],
                     ),
                     Column(
                       children: [
-                        Text("Follows", style: LargeStyle),
+                        const Text("Follows", style: LargeStyle),
                         Text(provider.getUser.followers.length.toString(),
                             style: LargeStyle),
                       ],

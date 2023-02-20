@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
@@ -7,7 +9,10 @@ class CategorieWidgts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, Object>> _mapCategory = [
-      {"icon": Icon(Icons.all_inclusive), "textIcon": "all"},
+      {
+        "icon": Icon(Icons.all_inclusive),
+        "textIcon": "all",
+      },
       {"icon": Icon(Icons.sports_esports), "textIcon": "sport"},
       {"icon": Icon(Icons.palette_rounded), "textIcon": "art"},
       {"icon": Icon(Icons.south_america_outlined), "textIcon": "social"},
@@ -75,10 +80,10 @@ class CatgorieConainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80,
+      width: 82,
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        border: Border.all(width: 02, color: Colors.blue),
+        border: Border.all(width: 02, color: BtColor),
         borderRadius: BorderRadius.circular(20),
       ),
       //color: Colors.blue,

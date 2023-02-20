@@ -45,7 +45,11 @@ const TextStyle normalStyle = TextStyle(
   color: DarkText,
   fontWeight: FontWeight.w600,
 );
-
+const TextStyle alertStyle = TextStyle(
+  fontSize: 18,
+  color: DarkText,
+  fontWeight: FontWeight.w400,
+);
 const TextStyle smallStyle = TextStyle(
   fontSize: 12,
   color: DarkText,
