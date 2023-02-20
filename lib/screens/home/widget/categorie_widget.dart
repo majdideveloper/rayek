@@ -7,12 +7,22 @@ class CategorieWidgts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, Object>> _mapCategory = [
-      {"icon": Icon(Icons.all_inclusive), "textIcon": "all"},
-      {"icon": Icon(Icons.sports_esports), "textIcon": "sport"},
-      {"icon": Icon(Icons.palette_rounded), "textIcon": "art"},
-      {"icon": Icon(Icons.south_america_outlined), "textIcon": "social"},
-      {"icon": Icon(Icons.business_rounded), "textIcon": "Business"},
-      {"icon": Icon(Icons.school_rounded), "textIcon": "school"},
+      {
+        "icon": const Icon(Icons.all_inclusive),
+        "textIcon": "all",
+      },
+      {
+        "icon": const Icon(
+          Icons.sports_esports,
+          color: BtColor,
+          size: 35,
+        ),
+        "textIcon": "sport"
+      },
+      {"icon": const Icon(Icons.palette_rounded), "textIcon": "art"},
+      {"icon": const Icon(Icons.south_america_outlined), "textIcon": "social"},
+      {"icon": const Icon(Icons.business_rounded), "textIcon": "Business"},
+      {"icon": const Icon(Icons.school_rounded), "textIcon": "school"},
     ];
     return Padding(
       padding: const EdgeInsets.all(10.0),
@@ -30,33 +40,6 @@ class CategorieWidgts extends StatelessWidget {
             );
           },
           scrollDirection: Axis.horizontal,
-          // children: [
-          //   CatgorieConainer(
-          //     icon: Icon(Icons.all_inclusive),
-          //     textIcon: "All",
-          //   ),
-          //   smallPaddingVer,
-          //   CatgorieConainer(
-          //     icon: Icon(Icons.sports_esports),
-          //     textIcon: "Sport",
-          //   ),
-          //   CatgorieConainer(
-          //     icon: Icon(Icons.palette_rounded),
-          //     textIcon: "art",
-          //   ),
-          //   CatgorieConainer(
-          //     icon: Icon(Icons.south_america_outlined),
-          //     textIcon: "social",
-          //   ),
-          //   CatgorieConainer(
-          //     icon: Icon(Icons.business_rounded),
-          //     textIcon: "Business",
-          //   ),
-          //   CatgorieConainer(
-          //     icon: Icon(Icons.school_rounded),
-          //     textIcon: "Schools",
-          //   ),
-          // ],
         ),
       ),
     );
@@ -75,10 +58,10 @@ class CatgorieConainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80,
+      width: 90,
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        border: Border.all(width: 02, color: Colors.blue),
+        border: Border.all(width: 02, color: BtColor),
         borderRadius: BorderRadius.circular(20),
       ),
       //color: Colors.blue,

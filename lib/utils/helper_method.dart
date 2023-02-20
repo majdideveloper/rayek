@@ -21,11 +21,14 @@ void showSnackBar(BuildContext context, String text) {
 
 void alertDialog(BuildContext context, String message) {
   AlertDialog alert = AlertDialog(
-    title: Text("Title"),
-    content: Text(message),
+    title: const Text("Alert", style: H3Style),
+    content: Text(
+      message,
+      style: alertStyle,
+    ),
     actions: [
       TextButton(
-        child: Text("OK"),
+        child: Text("OK", style: H3Style),
         onPressed: () {
           // Do something when OK is pressed
           Navigator.of(context).pop();
@@ -51,7 +54,7 @@ void showLoadingDialog(BuildContext context) {
         child: AlertDialog(
           content: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
+            children: const <Widget>[
               CircularProgressIndicator(),
               Text("Loading..."),
             ],

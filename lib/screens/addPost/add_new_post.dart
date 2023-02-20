@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -97,7 +98,8 @@ class _AddNewPostState extends State<AddNewPost> {
                           showSnackBar(context, "Question Not posted");
                         }
                       } else {
-                        alertDialog(context, "ahgfjfdhagfa");
+                        alertDialog(context,
+                            "Please make sure your question is at least 10 letters long and includes a selected category with a minimum of two possible answers. \n Thank you for your attention to this matter. Please revise your question accordingly.");
                       }
                     },
                     child: const Text(
@@ -148,9 +150,8 @@ class _AddNewPostState extends State<AddNewPost> {
                 //   thickness: 2.0,
                 // ),
                 smallPaddingHor,
-                // 4rd child add pick
 
-                //5rd child category
+                //4rd child category
                 // Align(
                 //     alignment: Alignment.centerLeft,
                 //     child: Text('Tap to chose your Category!')),
@@ -187,6 +188,8 @@ class _AddNewPostState extends State<AddNewPost> {
                   ),
                 ),
 
+                smallPaddingHor,
+                // 5d child add pick image
                 InkWell(
                   onTap: () async {
                     await pickImage();
@@ -202,14 +205,14 @@ class _AddNewPostState extends State<AddNewPost> {
                             )
                           : Icon(Icons.photo, color: BtColor),
                       smallPaddingVer,
-                      Text('choose image'),
+                      const Text('choose image'),
                     ],
                   ),
                 ),
                 meduimPaddingHor,
                 //6d child answers
                 Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.checklist_sharp,
                       color: BtColor,
