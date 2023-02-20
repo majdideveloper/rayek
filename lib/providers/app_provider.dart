@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:rayek_v001/screens/addPost/add_new_post.dart';
 
 import '../screens/addPost/add_post_screen.dart';
@@ -7,6 +10,17 @@ import '../screens/profile/profile_screen.dart';
 import '../screens/search/search_screen.dart';
 
 class AppProvider with ChangeNotifier {
+  // image post
+  XFile? _image;
+
+  XFile? get getImage => _image;
+
+  set setImage(XFile? img) {
+    _image = img;
+    notifyListeners();
+  }
+
+  //indexBottom bar
   int _indexScreen = 0;
 
   final List<Widget> listScreen = [
@@ -25,7 +39,7 @@ class AppProvider with ChangeNotifier {
   }
 
   //list for responces user
-  List<Map<String, int>> _responces = [];
+  final List<Map<String, int>> _responces = [];
 
   List get getListResponses => _responces;
   int get lengthList => _responces.length;
@@ -39,7 +53,7 @@ class AppProvider with ChangeNotifier {
   }
 
   removeResponce(int index) {
-    _responces.remove(index);
+    _responces.removeAt(index);
     notifyListeners();
   }
 
