@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rayek_v001/providers/user_provider.dart';
+import 'package:rayek_v001/resources/storage_methods.dart';
 import 'package:rayek_v001/screens/profile/widget/curver_clipper.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
@@ -23,6 +28,29 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  File? image;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return null;
+
+      return File(image.path);
+    } on PlatformException catch (e) {
+      print('error $e');
+    }
+  }
+
+  Future updateImage() async {
+    File image = await pickImage();
+
+    Uint8List bytes = image.readAsBytesSync() as Uint8List;
+
+    String res =
+        await StorageMethods().uploadImageToStorage("profileImg", bytes, false);
+    print(res);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -75,15 +103,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                             child: ClipOval(
-                              child: Image.network(
-                                widget.user == null
-                                    ? provider.getUser.photoUrl
-                                    : widget.user!.photoUrl,
-                                height: 120,
-                                width: 120,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                                child: Image.network(
+                              widget.user == null
+                                  ? provider.getUser.photoUrl
+                                  : widget.user!.photoUrl,
+                              height: 120,
+                              width: 120,
+                              fit: BoxFit.cover,
+                            )),
                           ),
                           //4d child icon add pictur
 
@@ -101,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () => updateImage(),
                                     icon: Icon(Icons.add_a_photo_rounded),
                                     color: BtColor,
                                     //iconSize: 22,
