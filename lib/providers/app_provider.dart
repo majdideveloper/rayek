@@ -25,18 +25,21 @@ class AppProvider with ChangeNotifier {
   }
 
   //list for responces user
-  List<String> _responces = [];
+  List<Map<String, int>> _responces = [];
+
+  List get getListResponses => _responces;
   int get lengthList => _responces.length;
 
-  String getValue(int index) => _responces[index];
+  String getValue(int index) =>
+      _responces[index].toString().split(":")[0].substring(1);
 
   addResponce(String value) {
-    _responces.add(value);
+    _responces.add({value: 0});
     notifyListeners();
   }
 
   removeResponce(int index) {
-    _responces.removeAt(index);
+    _responces.remove(index);
     notifyListeners();
   }
 

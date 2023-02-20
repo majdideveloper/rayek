@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rayek_v001/models/question.dart';
 import 'package:rayek_v001/resources/auth_methods.dart';
 import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/home/widget/categorie_widget.dart';
+import 'package:rayek_v001/screens/home/widget/post_widget.dart';
 
 import 'package:rayek_v001/utils/utils.dart';
 
@@ -20,19 +23,39 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const CategorieWidgts(),
-          const Center(
-            child: Text(
-              'home',
-              style: boldTitleStyle,
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              AuthMethods().signOut();
-              goToAndForget(context, const WelcomeScreen());
-            },
-            child: const Text("log out"),
-          ),
+
+          //
+          StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection("questions")
+                  .snapshots(),
+              builder: ((context, snapshot) {
+                return (snapshot.connectionState == ConnectionState.waiting)
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Flexible(
+                        child: ListView.separated(
+                            separatorBuilder: ((context, index) =>
+                                smallPaddingHor),
+                            itemCount: snapshot.data!.docs.length,
+                            itemBuilder: ((context, index) {
+                              PostQuestion question = PostQuestion.fromSnap(
+                                  snapshot.data!.docs[index]);
+
+                              return PostWidget(
+                                question: question,
+                              );
+                              // ListTile(
+                              //   leading: CircleAvatar(
+                              //     backgroundImage:
+                              //         NetworkImage(question.postUrl),
+                              //   ),
+                              //   title: Text(question.question),
+                              //   subtitle: Text(question.username),
+                              // );
+                            })));
+              })),
         ],
       ),
     );

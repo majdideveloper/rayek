@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:rayek_v001/providers/app_provider.dart';
 import 'package:rayek_v001/providers/user_provider.dart';
+import 'package:rayek_v001/resources/firestore_methods.dart';
 
 import '../../models/user.dart';
 import '../../utils/utils.dart';
@@ -19,6 +20,9 @@ class AddPostScreen extends StatefulWidget {
 
 class _AddPostScreenState extends State<AddPostScreen> {
   File? image;
+  XFile? tempImg;
+  //Uint8List uint8list = Uint8List.fromList(File(path).readAsBytesSync())
+
   var dropdownvalue = 'Selected Category';
   final _controllerQuestion = TextEditingController();
   final _controllerReponces = TextEditingController();
@@ -26,11 +30,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
   // function pick image from gallory
   Future pickImage() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return null;
+      tempImg = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (tempImg == null) return null;
 
       setState(() {
-        this.image = File(image.path);
+        image = File(tempImg!.path);
       });
     } on PlatformException catch (e) {
       print('error $e');
@@ -59,13 +63,28 @@ class _AddPostScreenState extends State<AddPostScreen> {
             Align(
               alignment: Alignment.topRight,
               child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    _controllerQuestion.clear();
-                    _controllerReponces.clear();
-                    dropdownvalue = 'Selected Category';
-                    provider.clearListResponce();
-                  });
+                onPressed: () async {
+                  String res = await FirestoreMethods().uploadQuestion(
+                    question: _controllerQuestion.text,
+                    file: Uint8List.fromList(
+                        File(tempImg!.path).readAsBytesSync()),
+                    userId: user.uid,
+                    username: user.username,
+                    category: dropdownvalue,
+                    responses: provider.getListResponses,
+                    profImag: user.photoUrl,
+                  );
+                  if (res == 'success') {
+                    showSnackBar(context, "Question posted");
+                    setState(() {
+                      _controllerQuestion.clear();
+                      _controllerReponces.clear();
+                      dropdownvalue = 'Selected Category';
+                      provider.clearListResponce();
+                    });
+                  } else {
+                    showSnackBar(context, "Question posted");
+                  }
                 },
                 child: Text('Share'),
               ),
