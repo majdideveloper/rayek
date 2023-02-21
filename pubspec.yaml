@@ -46,6 +46,7 @@ dependencies:
   firebase_storage: ^11.0.13
   uuid: ^3.0.6
   lottie: 
+  simple_speed_dial:
 
 
 dev_dependencies:

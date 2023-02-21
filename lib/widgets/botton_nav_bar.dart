@@ -1,33 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:rayek_v001/providers/app_provider.dart';
-
-import 'package:rayek_v001/screens/home/home_screen.dart';
-import 'package:rayek_v001/screens/profile/profile_screen.dart';
+import 'package:simple_speed_dial/simple_speed_dial.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        //Provider.of<AppProvider>(context, listen :false)and Provider.of<AppProvider>(context, listen: true)
-        //context.read<AppProvider>() and context.watch<AppProvider>()
-        body: Provider.of<AppProvider>(context, listen: true)
-            .listScreen[context.read<AppProvider>().index],
-        bottomNavigationBar: Consumer<AppProvider>(
-          builder: (_, provider, __) => BottomNavigationBar(
-              onTap: (index) => provider.setIndex = index,
-              currentIndex: provider.index,
-              type: BottomNavigationBarType.fixed,
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-                BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
-                BottomNavigationBarItem(icon: Icon(Icons.add), label: ""),
-                BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
-              ]),
-        ),
+    return Scaffold(
+      floatingActionButton: SpeedDial(
+        child: Icon(Icons.sort_rounded),
+        closedForegroundColor: Colors.black,
+        openForegroundColor: Colors.white,
+        closedBackgroundColor: Colors.white,
+        openBackgroundColor: Colors.black,
+        //  labelsStyle: /* Your label TextStyle goes here */,
+        labelsBackgroundColor: Colors.white,
+        /* Your custom animation controller goes here */
+        speedDialChildren: <SpeedDialChild>[
+          SpeedDialChild(
+            child: Icon(Icons.home),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blueAccent,
+            label: 'Let\'s go to home!',
+            onPressed: () {},
+            closeSpeedDialOnPressed: false,
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.search),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blueAccent,
+            label: 'search!',
+            onPressed: () {},
+            closeSpeedDialOnPressed: false,
+          ),
+
+          SpeedDialChild(
+            child: Icon(Icons.person),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.pink,
+            label: 'Let\'s go to profile!',
+            onPressed: () {},
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.design_services),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue[900],
+            label: 'Let\'s write a post!',
+            onPressed: () {},
+          ),
+          //  Your other SpeedDialChildren go here.
+        ],
       ),
     );
   }
