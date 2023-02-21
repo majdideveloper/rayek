@@ -195,6 +195,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     : LogOutButton(
                         onPressed: () {
                           InkWell(
+                            onTap: () {},
                             child: InfollowButton(
                               onPressed: () {},
                             ),
