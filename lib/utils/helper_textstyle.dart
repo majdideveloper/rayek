@@ -55,3 +55,8 @@ const TextStyle smallStyle = TextStyle(
   color: DarkText,
   fontWeight: FontWeight.w200,
 );
+const TextStyle lightStyle = TextStyle(
+  fontSize: 18,
+  color: BgColor,
+  fontWeight: FontWeight.w600,
+);

@@ -72,7 +72,7 @@ void alertDialogDeletePost(BuildContext context, String message,
   );
 }
 
-void showLoadingDialog(BuildContext context) {
+void showLoadingDialog(BuildContext context, String url) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -81,10 +81,7 @@ void showLoadingDialog(BuildContext context) {
         onWillPop: () async => false,
         child: AlertDialog(
             content: Container(
-          child: Lottie.network(
-              'https://assets7.lottiefiles.com/packages/lf20_vjxfqggs.json',
-              height: 250,
-              width: 250),
+          child: Lottie.network(url, height: 250, width: 250),
         )),
       );
     },

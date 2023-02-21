@@ -40,9 +40,10 @@ class PostWidget extends StatelessWidget {
                               context, "are you sure delete Post",
                               onPressed: () async {
                             Navigator.pop(context);
-                            showLoadingDialog(context);
+                            showLoadingDialog(context,
+                                'https://assets2.lottiefiles.com/packages/lf20_vvrfedzr.json');
 
-                            await Future.delayed(Duration(seconds: 3));
+                            await Future.delayed(Duration(seconds: 4));
                             FirebaseFirestore.instance
                                 .collection("questions")
                                 .doc(question.postId)
@@ -54,7 +55,10 @@ class PostWidget extends StatelessWidget {
                           //     .doc(question.postId)
                           //     .delete();
                         },
-                        icon: Icon(Icons.delete))
+                        icon: Icon(
+                          Icons.delete_forever,
+                          color: BtColor,
+                        ))
                     : SizedBox.shrink(),
               ),
               smallPaddingHor,

@@ -68,7 +68,9 @@ class _AddNewPostState extends State<AddNewPost> {
                         // setState(() {
                         //   _isLoading = true;
                         // });
-                        showLoadingDialog(context);
+                        showLoadingDialog(context,
+                            'https://lottie.host/3fbe4e60-14cc-4792-9e41-e927020b3ee2/BKmG5z7oRW.json');
+                        // 'https://assets7.lottiefiles.com/packages/lf20_qqu8eybe.json'
                         String res = await FirestoreMethods().uploadQuestion(
                           question: _controllerQuestion.text,
                           file: Uint8List.fromList(

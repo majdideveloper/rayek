@@ -4,6 +4,7 @@ import 'package:rayek_v001/providers/app_provider.dart';
 
 import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/screens/profile/profile_screen.dart';
+import 'package:rayek_v001/utils/palette.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
@@ -18,11 +19,19 @@ class BottomBar extends StatelessWidget {
             .listScreen[context.read<AppProvider>().index],
         bottomNavigationBar: Consumer<AppProvider>(
           builder: (_, provider, __) => BottomNavigationBar(
+              backgroundColor: LighColor,
               onTap: (index) => provider.setIndex = index,
               currentIndex: provider.index,
+              selectedItemColor: BtColor,
+              unselectedItemColor: HLightText,
               type: BottomNavigationBarType.fixed,
               items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home,
+                      size: 30,
+                    ),
+                    label: ""),
                 BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
                 BottomNavigationBarItem(icon: Icon(Icons.add), label: ""),
                 BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
