@@ -13,6 +13,7 @@ import 'package:rayek_v001/providers/user_provider.dart';
 import 'package:rayek_v001/resources/storage_methods.dart';
 import 'package:rayek_v001/screens/profile/widget/curver_clipper.dart';
 import 'package:rayek_v001/utils/utils.dart';
+import 'package:rayek_v001/widgets/infollow.dart';
 import 'package:rayek_v001/widgets/logout_buttom.dart';
 
 import '../../models/question.dart';
@@ -192,7 +193,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       )
                     : LogOutButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          InkWell(
+                            child: InfollowButton(
+                              onPressed: () {},
+                            ),
+                          );
+                        },
                         text: 'Follow',
                         icon: Icon(
                           Icons.favorite_border,
