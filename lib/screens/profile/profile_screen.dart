@@ -161,18 +161,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      children: const [
-                        Text(
-                          "Posts",
-                          style: LargeStyle,
-                        ),
-                        Text("123", style: LargeStyle),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text("Followers", style: LargeStyle),
-                        Text("1452", style: LargeStyle),
+                      children: [
+                        const Text("Followers", style: LargeStyle),
+                        Text(provider.getUser.followers.length.toString(),
+                            style: LargeStyle),
                       ],
                     ),
                     Column(
@@ -255,6 +247,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                                     return PostWidget(
                                       question: question,
+                                      myPost:
+                                          widget.user == null ? true : false,
                                     );
                                   })));
                     })),

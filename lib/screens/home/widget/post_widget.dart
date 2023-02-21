@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:rayek_v001/models/question.dart';
@@ -5,10 +6,9 @@ import 'package:rayek_v001/utils/utils.dart';
 
 class PostWidget extends StatelessWidget {
   final PostQuestion question;
-  const PostWidget({
-    Key? key,
-    required this.question,
-  }) : super(key: key);
+  final bool myPost;
+  const PostWidget({Key? key, required this.question, required this.myPost})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +24,38 @@ class PostWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: NetworkImage(question.profImage),
-                  ),
-                  smallPaddingVer,
-                  Text(
-                    question.username,
-                    style: boldTitleStyle,
-                  )
-                ],
+              ListTile(
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(question.profImage),
+                ),
+                title: Text(
+                  question.username,
+                  style: boldTitleStyle,
+                ),
+                trailing: myPost
+                    ? IconButton(
+                        onPressed: () {
+                          alertDialogDeletePost(
+                              context, "are you sure delete Post",
+                              onPressed: () async {
+                            Navigator.pop(context);
+                            showLoadingDialog(context);
+
+                            await Future.delayed(Duration(seconds: 3));
+                            FirebaseFirestore.instance
+                                .collection("questions")
+                                .doc(question.postId)
+                                .delete();
+                            Navigator.pop(context);
+                          });
+                          // FirebaseFirestore.instance
+                          //     .collection("questions")
+                          //     .doc(question.postId)
+                          //     .delete();
+                        },
+                        icon: Icon(Icons.delete))
+                    : SizedBox.shrink(),
               ),
               smallPaddingHor,
               Image.network(

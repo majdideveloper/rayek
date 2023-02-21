@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
 
                               return PostWidget(
                                 question: question,
+                                myPost: false,
                               );
                             })));
               })),

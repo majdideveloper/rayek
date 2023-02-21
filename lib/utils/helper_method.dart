@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
 void goTo(BuildContext context, Widget nextPage) {
@@ -44,6 +45,33 @@ void alertDialog(BuildContext context, String message) {
   );
 }
 
+void alertDialogDeletePost(BuildContext context, String message,
+    {void Function()? onPressed}) {
+  AlertDialog alert = AlertDialog(
+    title: const Text("Alert", style: H3Style),
+    content: Text(
+      message,
+      style: alertStyle,
+    ),
+    actions: [
+      TextButton(
+        child: Text("Cancel", style: H3Style),
+        onPressed: () {
+          // Do something when OK is pressed
+          Navigator.of(context).pop();
+        },
+      ),
+      TextButton(child: Text("OK", style: H3Style), onPressed: onPressed),
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
 void showLoadingDialog(BuildContext context) {
   showDialog(
     context: context,
@@ -52,14 +80,12 @@ void showLoadingDialog(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const <Widget>[
-              CircularProgressIndicator(),
-              Text("Loading..."),
-            ],
-          ),
-        ),
+            content: Container(
+          child: Lottie.network(
+              'https://assets7.lottiefiles.com/packages/lf20_vjxfqggs.json',
+              height: 250,
+              width: 250),
+        )),
       );
     },
   );
