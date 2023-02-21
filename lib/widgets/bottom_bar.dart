@@ -19,7 +19,7 @@ class BottomBar extends StatelessWidget {
             .listScreen[context.read<AppProvider>().index],
         bottomNavigationBar: Consumer<AppProvider>(
           builder: (_, provider, __) => BottomNavigationBar(
-              backgroundColor: LighColor,
+              backgroundColor: DarkText,
               onTap: (index) => provider.setIndex = index,
               currentIndex: provider.index,
               selectedItemColor: BtColor,

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -10,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rayek_v001/providers/user_provider.dart';
+import 'package:rayek_v001/resources/firestore_methods.dart';
 import 'package:rayek_v001/resources/storage_methods.dart';
 import 'package:rayek_v001/screens/profile/widget/curver_clipper.dart';
 import 'package:rayek_v001/utils/utils.dart';
@@ -34,27 +36,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  File? image;
+  XFile? tempImg;
 
+  // function pick image from gallory
   Future pickImage() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return null;
-
-      return File(image.path);
+      tempImg = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (tempImg == null) return null;
     } on PlatformException catch (e) {
       print('error $e');
     }
-  }
-
-  Future updateImage() async {
-    File image = await pickImage();
-
-    Uint8List bytes = image.readAsBytesSync() as Uint8List;
-
-    String res =
-        await StorageMethods().uploadImageToStorage("profileImg", bytes, false);
-    print(res);
   }
 
   @override
@@ -134,7 +125,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: IconButton(
-                                    onPressed: () => updateImage(),
+                                    onPressed: () async {
+                                      // icon tchange image
+                                      await pickImage();
+                                      showLoadingDialog(context,
+                                          'https://lottie.host/3fbe4e60-14cc-4792-9e41-e927020b3ee2/BKmG5z7oRW.json');
+                                      await FirestoreMethods()
+                                          .uploadImageProfile(tempImg!);
+                                      context
+                                          .read<UserProvider>()
+                                          .refreshUser();
+                                      Navigator.pop(context);
+                                    },
                                     icon: Icon(Icons.add_a_photo_rounded),
                                     color: BtColor,
                                     //iconSize: 22,
