@@ -47,7 +47,8 @@ dependencies:
   uuid: ^3.0.6
   lottie: 
   simple_speed_dial:
-
+  flutter_arc_speed_dial:
+  flutter_polls: 
 
 dev_dependencies:
   flutter_test:

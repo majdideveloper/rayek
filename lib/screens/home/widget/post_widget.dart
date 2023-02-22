@@ -50,10 +50,6 @@ class PostWidget extends StatelessWidget {
                                 .delete();
                             Navigator.pop(context);
                           });
-                          // FirebaseFirestore.instance
-                          //     .collection("questions")
-                          //     .doc(question.postId)
-                          //     .delete();
                         },
                         icon: Icon(
                           Icons.delete_forever,

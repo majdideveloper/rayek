@@ -39,7 +39,7 @@ class AppProvider with ChangeNotifier {
   }
 
   //list for responces user
-  final List<Map<String, int>> _responces = [];
+  final List<Map<String, dynamic>> _responces = [];
 
   List get getListResponses => _responces;
   int get lengthList => _responces.length;
@@ -48,7 +48,7 @@ class AppProvider with ChangeNotifier {
       _responces[index].toString().split(":")[0].substring(1);
 
   addResponce(String value) {
-    _responces.add({value: 0});
+    _responces.add({"id": lengthList, "reponse": value, "votes": 0});
     notifyListeners();
   }
 
@@ -61,4 +61,18 @@ class AppProvider with ChangeNotifier {
     _responces.clear();
     notifyListeners();
   }
+
+  //list responses update
+  List _updateResponses = [];
+  set addData(List list) {
+    _updateResponses = list;
+    notifyListeners();
+  }
+
+  updateData(int index) {
+    _updateResponses[index]["votes"] += 1;
+    notifyListeners();
+  }
+
+  get getDataList => _updateResponses;
 }
