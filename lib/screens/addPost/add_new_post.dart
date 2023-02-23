@@ -83,7 +83,8 @@ class _AddNewPostState extends State<AddNewPost> {
                         );
                         if (res == 'success') {
                           Navigator.pop(context);
-                          showSnackBar(context, "Question posted");
+                          //showSnackBar(context, "Question posted");
+                          provider.setIndex = 0;
                           setState(() {
                             _controllerQuestion.clear();
                             _controllerReponces.clear();

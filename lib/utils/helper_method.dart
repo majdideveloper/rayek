@@ -102,100 +102,103 @@ void showPost(BuildContext context, PostQuestion question) {
     builder: (BuildContext context) {
       final provider = Provider.of<AppProvider>(context);
       final user = Provider.of<UserProvider>(context);
-      return WillPopScope(
-          onWillPop: () async => false,
-          child: AlertDialog(
-            actions: [
-              TextButton(
-                child: Text("Cancel", style: H3Style),
-                onPressed: () {
-                  // Do something when OK is pressed
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-            content: SizedBox(
-                height: 600,
-                width: 300,
-                child: FlutterPolls(
-                  hasVoted: question.usersVotedId.contains(user.getUser.uid),
-                  userVotedOptionId: 1,
-
-                  pollId: question.postId,
-                  // party desgin polls
-                  pollTitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(question.profImage),
-                        ),
-                        title: Text(
-                          question.username,
-                          style: boldTitleStyle,
-                        ),
-                      ),
-                      smallPaddingHor,
-                      Image.network(
-                        question.postUrl,
-                        height: 300,
-                        width: double.infinity,
-                        fit: BoxFit.fitWidth,
-                      ),
-                      smallPaddingHor,
-                      Text(
-                        question.question,
-                        style: boldTitleStyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      smallPaddingHor,
-                    ],
-                  ),
-
-                  // party logic polls
-                  onVoted: (pollOption, newTotalVotes) async {
-                    provider.addData = question.responses;
-                    print(provider.getDataList);
-
-                    provider.updateData(pollOption.id!);
-                    print(provider.getDataList);
-
-                    await Future.delayed(const Duration(seconds: 3));
-                    FirebaseFirestore.instance
-                        .collection("questions")
-                        .doc(question.postId)
-                        .update({
-                      'responses': provider.getDataList,
-                      'usersVotedId': FieldValue.arrayUnion([user.getUser.uid])
-                    });
-
-                    // print('Voted: ${pollOption.id}');
-                    // print('Voted: ${pollOption.votes}');
-
-                    /// If HTTP status is success, return true else false
-                    return true;
+      return SingleChildScrollView(
+        child: WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              actions: [
+                TextButton(
+                  child: Text("Cancel", style: H3Style),
+                  onPressed: () {
+                    // Do something when OK is pressed
+                    Navigator.of(context).pop();
                   },
-                  pollOptions: List.from(
-                    question.responses.map(
-                      (option) {
-                        return PollOption(
-                          id: option['id'],
-                          title: Text(
-                            option['reponse'],
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
+                ),
+              ],
+              content: SizedBox(
+                  height: 600,
+                  width: 300,
+                  child: FlutterPolls(
+                    hasVoted: question.usersVotedId.contains(user.getUser.uid),
+                    userVotedOptionId: 1,
+
+                    pollId: question.postId,
+                    // party desgin polls
+                    pollTitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 30,
+                            backgroundImage: NetworkImage(question.profImage),
                           ),
-                          votes: option['votes'],
-                        );
-                      },
+                          title: Text(
+                            question.username,
+                            style: boldTitleStyle,
+                          ),
+                        ),
+                        smallPaddingHor,
+                        Image.network(
+                          question.postUrl,
+                          height: 300,
+                          width: double.infinity,
+                          fit: BoxFit.fitWidth,
+                        ),
+                        smallPaddingHor,
+                        Text(
+                          question.question,
+                          style: boldTitleStyle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        smallPaddingHor,
+                      ],
                     ),
-                  ),
-                )),
-          ));
+
+                    // party logic polls
+                    onVoted: (pollOption, newTotalVotes) async {
+                      provider.addData = question.responses;
+                      print(provider.getDataList);
+
+                      provider.updateData(pollOption.id!);
+                      print(provider.getDataList);
+
+                      await Future.delayed(const Duration(seconds: 3));
+                      FirebaseFirestore.instance
+                          .collection("questions")
+                          .doc(question.postId)
+                          .update({
+                        'responses': provider.getDataList,
+                        'usersVotedId':
+                            FieldValue.arrayUnion([user.getUser.uid])
+                      });
+
+                      // print('Voted: ${pollOption.id}');
+                      // print('Voted: ${pollOption.votes}');
+
+                      /// If HTTP status is success, return true else false
+                      return true;
+                    },
+                    pollOptions: List.from(
+                      question.responses.map(
+                        (option) {
+                          return PollOption(
+                            id: option['id'],
+                            title: Text(
+                              option['reponse'],
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            votes: option['votes'],
+                          );
+                        },
+                      ),
+                    ),
+                  )),
+            )),
+      );
     },
   );
 }

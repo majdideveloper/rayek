@@ -79,7 +79,7 @@ class SpeedDialMenu extends StatelessWidget {
       mainFABPosX: 15,
       mainFABPosY: 15,
       isSpeedDialFABsMini: false,
-      paddingBtwSpeedDialButton: 10.0,
+      paddingBtwSpeedDialButton: 2.0,
       //manually open or close menu
       // updateSpeedDialStatus: (isShow) {
       //   //return any open or close change within the widget

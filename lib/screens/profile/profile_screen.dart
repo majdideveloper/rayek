@@ -167,15 +167,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Column(
                       children: [
-                        const Text("Followers", style: LargeStyle),
-                        Text(provider.getUser.followers.length.toString(),
+                        const Text("Follows", style: LargeStyle),
+                        Text(
+                            widget.user == null
+                                ? provider.getUser.following.length.toString()
+                                : widget.user!.following.length.toString(),
                             style: LargeStyle),
                       ],
                     ),
                     Column(
                       children: [
-                        const Text("Follows", style: LargeStyle),
-                        Text(provider.getUser.followers.length.toString(),
+                        const Text("Followers", style: LargeStyle),
+                        Text(
+                            widget.user == null
+                                ? provider.getUser.followers.length.toString()
+                                : widget.user!.followers.length.toString(),
                             style: LargeStyle),
                       ],
                     )
@@ -199,11 +205,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       )
                     : LogOutButton(
                         onPressed: () {
-                          InkWell(
-                            child: InfollowButton(
-                              onPressed: () {},
-                            ),
-                          );
+                          setState(() {
+                            FirebaseFirestore.instance
+                                .collection("users")
+                                .doc(widget.user!.uid)
+                                .update({
+                              'followers':
+                                  FieldValue.arrayUnion([provider.getUser.uid])
+                            });
+                            FirebaseFirestore.instance
+                                .collection("users")
+                                .doc(provider.getUser.uid)
+                                .update({
+                              'following':
+                                  FieldValue.arrayUnion([widget.user!.uid])
+                            });
+                          });
+
+                          context.read<UserProvider>().refreshUser();
                         },
                         text: 'Follow',
                         icon: Icon(

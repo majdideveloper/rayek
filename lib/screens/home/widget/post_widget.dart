@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:rayek_v001/models/question.dart';
@@ -27,8 +28,21 @@ class PostWidget extends StatelessWidget {
               ListTile(
                 leading: CircleAvatar(
                   radius: 30,
+                  backgroundColor: Colors.grey[300],
                   backgroundImage: NetworkImage(question.profImage),
                 ),
+
+                // Container(
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //   ),
+                //   child: FancyShimmerImage(
+                //     imageUrl: question.postUrl,
+                //     // height: 300,
+                //     width: double.infinity,
+                //     boxFit: BoxFit.fitWidth,
+                //   ),
+                // ),
                 title: Text(
                   question.username,
                   style: boldTitleStyle,
@@ -58,11 +72,11 @@ class PostWidget extends StatelessWidget {
                     : SizedBox.shrink(),
               ),
               smallPaddingHor,
-              Image.network(
-                question.postUrl,
+              FancyShimmerImage(
+                imageUrl: question.postUrl,
                 height: 300,
                 width: double.infinity,
-                fit: BoxFit.fitWidth,
+                boxFit: BoxFit.fitWidth,
               ),
               smallPaddingHor,
               Text(

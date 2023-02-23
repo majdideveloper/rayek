@@ -49,6 +49,7 @@ dependencies:
   simple_speed_dial:
   flutter_arc_speed_dial:
   flutter_polls: 
+  fancy_shimmer_image: ^2.0.2
 
 dev_dependencies:
   flutter_test:
