@@ -3,6 +3,7 @@ import 'package:flutter_arc_speed_dial/flutter_speed_dial_menu_button.dart';
 import 'package:flutter_arc_speed_dial/main_menu_floating_action_button.dart';
 import 'package:provider/provider.dart';
 import 'package:rayek_v001/providers/app_provider.dart';
+import 'package:rayek_v001/utils/palette.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 
 class BottomBarNav extends StatelessWidget {
@@ -90,8 +91,8 @@ class SpeedDialMenu extends StatelessWidget {
           child: Icon(Icons.menu),
           onPressed: () {},
           closeMenuChild: Icon(Icons.close),
-          closeMenuForegroundColor: Colors.white,
-          closeMenuBackgroundColor: Colors.red),
+          closeMenuForegroundColor: BtColor,
+          closeMenuBackgroundColor: DarkText),
       floatingActionButtonWidgetChildren: <FloatingActionButton>[
         FloatingActionButton(
           mini: true,
@@ -100,7 +101,7 @@ class SpeedDialMenu extends StatelessWidget {
             //if need to close menu after click
             provider.setIndex = 0;
           },
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.blue[900],
         ),
         FloatingActionButton(
           mini: true,
@@ -112,7 +113,7 @@ class SpeedDialMenu extends StatelessWidget {
             provider.setIndex = 1;
             //if need to close menu after click
           },
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.pink[400],
         ),
         FloatingActionButton(
           mini: true,
@@ -121,7 +122,7 @@ class SpeedDialMenu extends StatelessWidget {
             provider.setIndex = 2;
             //if need to toggle menu after click
           },
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.indigo[300],
         ),
         FloatingActionButton(
           mini: true,
