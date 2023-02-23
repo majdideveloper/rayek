@@ -9,10 +9,12 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:rayek_v001/providers/app_provider.dart';
 
 import 'package:rayek_v001/providers/user_provider.dart';
 import 'package:rayek_v001/resources/firestore_methods.dart';
 import 'package:rayek_v001/resources/storage_methods.dart';
+import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/profile/widget/curver_clipper.dart';
 import 'package:rayek_v001/utils/utils.dart';
 import 'package:rayek_v001/widgets/infollow.dart';
@@ -184,9 +186,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 smallPaddingHor,
                 widget.user == null
                     ? LogOutButton(
-                        onPressed: () {
-                          AuthMethods().signOut();
-                          goToAndForget(context, const WelcomeScreen());
+                        onPressed: () async {
+                          await AuthMethods().signOut();
+
+                          goToAndForget(context, const LoginScreen());
                         },
                         text: 'LogOut',
                         icon: Icon(

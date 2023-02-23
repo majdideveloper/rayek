@@ -78,6 +78,7 @@ class AuthMethods {
   //get information user
   Future<UserModel> getUserDetails() async {
     // garantie user moujoud
+
     User currentUser = _auth.currentUser!;
 
     DocumentSnapshot documentSnapshot =

@@ -10,6 +10,7 @@ class PostQuestion {
   final datePublished;
   final String postUrl;
   final String profImage;
+  final List usersVotedId;
 
   const PostQuestion({
     required this.question,
@@ -21,21 +22,24 @@ class PostQuestion {
     required this.datePublished,
     required this.postUrl,
     required this.profImage,
+    required this.usersVotedId,
   });
 
   static PostQuestion fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
 
     return PostQuestion(
-        question: snapshot["question"],
-        userId: snapshot["userId"],
-        responses: snapshot["responses"],
-        category: snapshot["category"],
-        postId: snapshot["postId"],
-        datePublished: snapshot["datePublished"],
-        username: snapshot["username"],
-        postUrl: snapshot['postUrl'],
-        profImage: snapshot['profImage']);
+      question: snapshot["question"],
+      userId: snapshot["userId"],
+      responses: snapshot["responses"],
+      category: snapshot["category"],
+      postId: snapshot["postId"],
+      datePublished: snapshot["datePublished"],
+      username: snapshot["username"],
+      postUrl: snapshot['postUrl'],
+      profImage: snapshot['profImage'],
+      usersVotedId: snapshot['usersVotedId'],
+    );
   }
 
   Map<String, dynamic> toJson() => {
@@ -47,6 +51,7 @@ class PostQuestion {
         "postId": postId,
         "datePublished": datePublished,
         'postUrl': postUrl,
-        'profImage': profImage
+        'profImage': profImage,
+        'usersVotedId': usersVotedId,
       };
 }

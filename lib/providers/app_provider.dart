@@ -44,11 +44,11 @@ class AppProvider with ChangeNotifier {
   List get getListResponses => _responces;
   int get lengthList => _responces.length;
 
-  String getValue(int index) =>
-      _responces[index].toString().split(":")[0].substring(1);
+  String getValue(int index) => _responces[index]["reponse"];
 
   addResponce(String value) {
     _responces.add({"id": lengthList, "reponse": value, "votes": 0});
+    print(_responces);
     notifyListeners();
   }
 

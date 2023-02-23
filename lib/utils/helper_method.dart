@@ -4,6 +4,7 @@ import 'package:flutter_polls/flutter_polls.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:rayek_v001/providers/app_provider.dart';
+import 'package:rayek_v001/providers/user_provider.dart';
 import 'package:rayek_v001/utils/utils.dart';
 
 import '../models/question.dart';
@@ -100,6 +101,7 @@ void showPost(BuildContext context, PostQuestion question) {
     barrierDismissible: false,
     builder: (BuildContext context) {
       final provider = Provider.of<AppProvider>(context);
+      final user = Provider.of<UserProvider>(context);
       return WillPopScope(
           onWillPop: () async => false,
           child: AlertDialog(
@@ -116,7 +118,7 @@ void showPost(BuildContext context, PostQuestion question) {
                 height: 600,
                 width: 300,
                 child: FlutterPolls(
-                  hasVoted: [1, 2, 3].contains(9),
+                  hasVoted: question.usersVotedId.contains(user.getUser.uid),
                   userVotedOptionId: 1,
 
                   pollId: question.postId,
@@ -162,9 +164,12 @@ void showPost(BuildContext context, PostQuestion question) {
 
                     await Future.delayed(const Duration(seconds: 3));
                     FirebaseFirestore.instance
-                        .collection("qustions")
+                        .collection("questions")
                         .doc(question.postId)
-                        .update({'responses': provider.getDataList});
+                        .update({
+                      'responses': provider.getDataList,
+                      'usersVotedId': FieldValue.arrayUnion([user.getUser.uid])
+                    });
 
                     // print('Voted: ${pollOption.id}');
                     // print('Voted: ${pollOption.votes}');
@@ -194,11 +199,3 @@ void showPost(BuildContext context, PostQuestion question) {
     },
   );
 }
-// class PollPost extends StatelessWidget {
-//   const PollPost({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return  FlutterPolls();
-//   }
-// }

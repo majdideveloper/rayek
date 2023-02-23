@@ -81,9 +81,9 @@ class SpeedDialMenu extends StatelessWidget {
       isSpeedDialFABsMini: false,
       paddingBtwSpeedDialButton: 10.0,
       //manually open or close menu
-      updateSpeedDialStatus: (isShow) {
-        //return any open or close change within the widget
-      },
+      // updateSpeedDialStatus: (isShow) {
+      //   //return any open or close change within the widget
+      // },
       //general init
       isMainFABMini: true,
       mainMenuFloatingActionButton: MainMenuFloatingActionButton(
@@ -96,6 +96,7 @@ class SpeedDialMenu extends StatelessWidget {
           closeMenuBackgroundColor: DarkText),
       floatingActionButtonWidgetChildren: <FloatingActionButton>[
         FloatingActionButton(
+          heroTag: "btn1",
           mini: true,
           child: Icon(Icons.home),
           onPressed: () {
@@ -105,6 +106,7 @@ class SpeedDialMenu extends StatelessWidget {
           backgroundColor: Colors.blue[900],
         ),
         FloatingActionButton(
+          heroTag: "btn2",
           mini: true,
           child: Icon(
             Icons.search,
@@ -117,6 +119,7 @@ class SpeedDialMenu extends StatelessWidget {
           backgroundColor: Colors.pink[600],
         ),
         FloatingActionButton(
+          heroTag: "btn3",
           mini: true,
           child: Icon(Icons.edit),
           onPressed: () {
@@ -126,6 +129,7 @@ class SpeedDialMenu extends StatelessWidget {
           backgroundColor: Colors.indigo[300],
         ),
         FloatingActionButton(
+          heroTag: "btn4",
           mini: true,
           child: Icon(Icons.person),
           onPressed: () {

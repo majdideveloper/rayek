@@ -38,7 +38,8 @@ class FirestoreMethods {
           postId: postId,
           datePublished: DateTime.now(),
           postUrl: photoUrl,
-          profImage: profImag);
+          profImage: profImag,
+          usersVotedId: []);
 
       _firestore.collection("questions").doc(postId).set(postQuestion.toJson());
       return 'success';
