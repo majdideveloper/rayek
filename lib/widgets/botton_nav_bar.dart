@@ -25,7 +25,7 @@ class BottomBarNav extends StatelessWidget {
         SpeedDialChild(
           child: Icon(Icons.home),
           foregroundColor: Colors.white,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: BtColor,
           // label: 'Let\'s go to home!',
           onPressed: () {
             provider.setIndex = 0;
@@ -46,7 +46,7 @@ class BottomBarNav extends StatelessWidget {
         SpeedDialChild(
           child: Icon(Icons.person),
           foregroundColor: Colors.white,
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.pink[300],
           // label: 'Let\'s go to profile!',
           onPressed: () {
             provider.setIndex = 3;
@@ -90,8 +90,9 @@ class SpeedDialMenu extends StatelessWidget {
           mini: false,
           child: Icon(Icons.menu),
           onPressed: () {},
+          backgroundColor: BtColor,
           closeMenuChild: Icon(Icons.close),
-          closeMenuForegroundColor: BtColor,
+          closeMenuForegroundColor: BgColor,
           closeMenuBackgroundColor: DarkText),
       floatingActionButtonWidgetChildren: <FloatingActionButton>[
         FloatingActionButton(
@@ -113,7 +114,7 @@ class SpeedDialMenu extends StatelessWidget {
             provider.setIndex = 1;
             //if need to close menu after click
           },
-          backgroundColor: Colors.pink[400],
+          backgroundColor: Colors.pink[600],
         ),
         FloatingActionButton(
           mini: true,
