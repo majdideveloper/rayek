@@ -5,7 +5,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/profile/profile_screen.dart';
 import 'package:rayek_v001/utils/utils.dart';
-import 'package:rayek_v001/widgets/custom_button.dart';
 
 import '../../models/user.dart';
 

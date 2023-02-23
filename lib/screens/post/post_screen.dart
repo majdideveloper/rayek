@@ -41,16 +41,19 @@ class _PostScreenState extends State<PostScreen> {
           pollTitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //profile pic
               ListTile(
                 leading: CircleAvatar(
                   radius: 30,
                   backgroundImage: NetworkImage(widget.question.profImage),
                 ),
+                //user name
                 title: Text(
                   widget.question.username,
                   style: boldTitleStyle,
                 ),
               ),
+              //question imag post
               smallPaddingHor,
               Image.network(
                 widget.question.postUrl,
@@ -59,6 +62,7 @@ class _PostScreenState extends State<PostScreen> {
                 fit: BoxFit.fitWidth,
               ),
               smallPaddingHor,
+              //question post
               Text(
                 widget.question.question,
                 style: boldTitleStyle,
