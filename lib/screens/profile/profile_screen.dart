@@ -167,7 +167,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Column(
                       children: [
-                        const Text("Follows", style: LargeStyle),
+                        const Text("Following", style: LargeStyle),
                         Text(
                             widget.user == null
                                 ? provider.getUser.following.length.toString()
@@ -203,33 +203,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: BtColor,
                         ),
                       )
-                    : LogOutButton(
-                        onPressed: () {
-                          setState(() {
-                            FirebaseFirestore.instance
-                                .collection("users")
-                                .doc(widget.user!.uid)
-                                .update({
-                              'followers':
-                                  FieldValue.arrayUnion([provider.getUser.uid])
-                            });
-                            FirebaseFirestore.instance
-                                .collection("users")
-                                .doc(provider.getUser.uid)
-                                .update({
-                              'following':
-                                  FieldValue.arrayUnion([widget.user!.uid])
-                            });
-                          });
+                    : widget.user!.followers.contains(provider.getUser.uid)
+                        ? LogOutButton(
+                            onPressed: () {
+                              setState(() {
+                                FirebaseFirestore.instance
+                                    .collection("users")
+                                    .doc(widget.user!.uid)
+                                    .update({
+                                  'followers': FieldValue.arrayUnion(
+                                      [provider.getUser.uid])
+                                });
+                                FirebaseFirestore.instance
+                                    .collection("users")
+                                    .doc(provider.getUser.uid)
+                                    .update({
+                                  'following':
+                                      FieldValue.arrayUnion([widget.user!.uid])
+                                });
+                              });
 
-                          context.read<UserProvider>().refreshUser();
-                        },
-                        text: 'Follow',
-                        icon: Icon(
-                          Icons.favorite_border,
-                          color: BtColor,
-                        ),
-                      ),
+                              context.read<UserProvider>().refreshUser();
+                            },
+                            text: 'Follow',
+                            icon: Icon(
+                              Icons.favorite_border,
+                              color: BtColor,
+                            ),
+                          )
+                        : InfollowButton(onPressed: () {}),
 
                 // last party of screen listView all Posts of user
                 const Divider(
@@ -276,10 +278,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         PostQuestion.fromSnap(
                                             snapshot.data!.docs[index]);
 
-                                    return PostWidget(
-                                      question: question,
-                                      myPost:
-                                          widget.user == null ? true : false,
+                                    return InkWell(
+                                      onTap: () => showPost(context, question),
+                                      child: PostWidget(
+                                        question: question,
+                                        myPost:
+                                            widget.user == null ? true : false,
+                                      ),
                                     );
                                   })));
                     })),

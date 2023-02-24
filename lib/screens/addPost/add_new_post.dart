@@ -30,7 +30,7 @@ class _AddNewPostState extends State<AddNewPost> {
   Future pickImage() async {
     try {
       tempImg = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (tempImg == null) return null;
+      if (tempImg == null) return tempImg;
     } on PlatformException catch (e) {
       print('error $e');
     }
@@ -64,7 +64,8 @@ class _AddNewPostState extends State<AddNewPost> {
                     onPressed: () async {
                       if (_controllerQuestion.text.length > 10 &&
                           provider.lengthList >= 2 &&
-                          dropdownvalue != 'Selected Category') {
+                          dropdownvalue != 'Selected Category' &&
+                          tempImg != null) {
                         // setState(() {
                         //   _isLoading = true;
                         // });
@@ -196,7 +197,10 @@ class _AddNewPostState extends State<AddNewPost> {
                 InkWell(
                   onTap: () async {
                     await pickImage();
-                    if (tempImg != null) provider.setImage = tempImg!;
+                    if (tempImg != null)
+                      provider.setImage = tempImg!;
+                    else
+                      provider.setImage = tempImg;
                   },
                   child: Row(
                     children: [

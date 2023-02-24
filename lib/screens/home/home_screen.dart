@@ -8,7 +8,6 @@ import 'package:rayek_v001/resources/auth_methods.dart';
 import 'package:rayek_v001/screens/auth/auth.dart';
 import 'package:rayek_v001/screens/home/widget/categorie_widget.dart';
 import 'package:rayek_v001/screens/home/widget/post_widget.dart';
-import 'package:rayek_v001/screens/post/post_screen.dart';
 
 import 'package:rayek_v001/utils/utils.dart';
 
