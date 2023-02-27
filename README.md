@@ -1,16 +1,60 @@
-# rayek_v001
+<div align="center">
 
-A new Flutter project.
+  <img src="assets/images/logobg.png" alt="logo" width="200" height="auto" />
+  <h1>Rayek Social Media</h1>
+  
+  
+<!-- Badges -->
+<p>
+ 
+ <a href="https://github.com/majdideveloper/rayek/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/majdideveloper/rayek" alt="contributors" />
+  </a>
+  <a href="">
+    <img src="https://img.shields.io/github/last-commit/majdideveloper/rayek" alt="last update" />
+  </a>
+  <a href="https://github.com/majdideveloper/rayek/issues/">
+    <img src="https://img.shields.io/github/issues/majdideveloper/rayek" alt="open issues" />
+  </a>
+</p>
+   
+<h4>
+    <a href="https://github.com/majdideveloper/rayek/">View Demo</a>
+  <span> · </span>
+    <a href="https://github.com/Louis3797/awesome-readme-template">Documentation</a>
+  <span> · </span>
+    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">Report Bug</a>
+  <span> · </span>
+    <a href="https://github.com/Louis3797/awesome-readme-template/issues/">Request Feature</a>
+  </h4>
+</div>
 
-## Getting Started
+<a href="https://github.com/majdideveloper/rayek/github-stats">
+<img src="https://github.com/majdideveloper/rayek//github-stats/blob/master/generated/overview.svg#gh-light-mode-only" />
+</a>
 
-This project is a starting point for a Flutter application.
+<br />
 
-A few resources to get you started if this is your first Flutter project:
+<!-- Table of Contents -->
+# :notebook_with_decorative_cover: Table of Contents
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [About the Project](#star2-about-the-project)
+  * [Screenshots](#camera-screenshots)
+  * [Tech Stack](#space_invader-tech-stack)
+  * [Features](#dart-features)
+  * [Color Reference](#art-color-reference)
+  * [Environment Variables](#key-environment-variables)
+- [Getting Started](#toolbox-getting-started)
+  * [Prerequisites](#bangbang-prerequisites)
+  * [Installation](#gear-installation)
+  * [Running Tests](#test_tube-running-tests)
+  * [Run Locally](#running-run-locally)
+  * [Deployment](#triangular_flag_on_post-deployment)
+- [Usage](#eyes-usage)
+- [Roadmap](#compass-roadmap)
+- [Contributing](#wave-contributing)
+  * [Code of Conduct](#scroll-code-of-conduct)
+- [FAQ](#grey_question-faq)
+- [License](#warning-license)
+- [Contact](#handshake-contact)
+- [Acknowledgements](#gem-acknowledgements)
