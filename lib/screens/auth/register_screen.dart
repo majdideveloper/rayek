@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rayek_v001/resources/auth_methods.dart';
 
 import 'package:rayek_v001/screens/auth/auth.dart';
-import 'package:rayek_v001/screens/auth/widget/widget_auth.dart';
 
 import '../../utils/utils.dart';
 import '../../widgets/custom_button.dart';
@@ -148,7 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     } else {
                       setState(() {
                         isLaoding = false;
-                        if (responce == "") responce = "something errorrrr";
+                        if (responce == "") responce = "something errors";
                       });
 
                       showSnackBar(context, responce);

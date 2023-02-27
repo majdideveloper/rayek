@@ -1,8 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:rayek_v001/resources/auth_methods.dart';
 import 'package:rayek_v001/screens/auth/auth.dart';
-import 'package:rayek_v001/utils/helper_method.dart';
 import 'package:rayek_v001/utils/utils.dart';
 import 'package:rayek_v001/widgets/custom_button.dart';
 import 'package:rayek_v001/widgets/logo_app.dart';

@@ -34,7 +34,7 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
-      print('THe form is valid');
+      print('The form is valid');
     }
   }
 

@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
-      print('THe form is valid');
+      print('The form is valid');
     }
   }
 
@@ -156,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     } else {
                       setState(() {
                         isLoading = false;
-                        if (responce == "") responce = "something errorrrr";
+                        if (responce == "") responce = "something errors";
                         print(responce);
                       });
                       showSnackBar(context, responce);
