@@ -57,4 +57,22 @@ class FirestoreMethods {
         .doc(_auth.currentUser!.uid)
         .update({"photoUrl": urlImage});
   }
+
+  Future followUser(dynamic currentUserId, dynamic idUserToFollow) async {
+    await _firestore.collection("users").doc(idUserToFollow).update({
+      'followers': FieldValue.arrayUnion([currentUserId])
+    });
+    await _firestore.collection("users").doc(currentUserId).update({
+      'following': FieldValue.arrayUnion([idUserToFollow])
+    });
+  }
+
+  Future unfollowUser(dynamic currentUserId, dynamic idUserToUnFollow) async {
+    await _firestore.collection("users").doc(idUserToUnFollow).update({
+      'followers': FieldValue.arrayRemove([currentUserId])
+    });
+    await _firestore.collection("users").doc(currentUserId).update({
+      'following': FieldValue.arrayRemove([idUserToUnFollow])
+    });
+  }
 }

@@ -39,6 +39,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   XFile? tempImg;
+  bool followUser = false;
+  int numberFollowers = 0;
 
   // function pick image from gallory
   Future pickImage() async {
@@ -48,6 +50,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } on PlatformException catch (e) {
       print('error $e');
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    if (widget.user != null) {
+      followUser = widget.user!.followers
+          .contains(context.read<UserProvider>().getUser.uid);
+      numberFollowers = widget.user!.followers.length;
+    }
+
+    super.initState();
   }
 
   @override
@@ -181,7 +195,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Text(
                             widget.user == null
                                 ? provider.getUser.followers.length.toString()
-                                : widget.user!.followers.length.toString(),
+                                : followUser
+                                    ? numberFollowers.toString()
+                                    : (!followUser && numberFollowers == 0)
+                                        ? "0"
+                                        : (numberFollowers - 1).toString(),
                             style: LargeStyle),
                       ],
                     )
@@ -203,27 +221,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: BtColor,
                         ),
                       )
-                    : widget.user!.followers.contains(provider.getUser.uid)
+                    : !followUser
                         ? LogOutButton(
-                            onPressed: () {
-                              setState(() {
-                                FirebaseFirestore.instance
-                                    .collection("users")
-                                    .doc(widget.user!.uid)
-                                    .update({
-                                  'followers': FieldValue.arrayUnion(
-                                      [provider.getUser.uid])
-                                });
-                                FirebaseFirestore.instance
-                                    .collection("users")
-                                    .doc(provider.getUser.uid)
-                                    .update({
-                                  'following':
-                                      FieldValue.arrayUnion([widget.user!.uid])
-                                });
-                              });
+                            onPressed: () async {
+                              await FirestoreMethods().followUser(
+                                  provider.getUser.uid, widget.user!.uid);
 
-                              context.read<UserProvider>().refreshUser();
+                              await provider.refreshUser();
+                              setState(() {
+                                followUser = !followUser;
+                                numberFollowers += 1;
+                              });
                             },
                             text: 'Follow',
                             icon: Icon(
@@ -231,7 +239,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: BtColor,
                             ),
                           )
-                        : InfollowButton(onPressed: () {}),
+                        : InfollowButton(onPressed: () {
+                            FirestoreMethods().unfollowUser(
+                                provider.getUser.uid, widget.user!.uid);
+                            setState(() {
+                              followUser = !followUser;
+                              numberFollowers -= 1;
+                            });
+                          }),
 
                 // last party of screen listView all Posts of user
                 const Divider(

@@ -10,6 +10,7 @@ import 'package:rayek_v001/screens/home/widget/categorie_widget.dart';
 import 'package:rayek_v001/screens/home/widget/post_widget.dart';
 
 import 'package:rayek_v001/utils/utils.dart';
+import 'package:rayek_v001/widgets/logo_app.dart';
 
 import '../profile/profile_screen.dart';
 
@@ -19,10 +20,25 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: BgColor,
+        centerTitle: true,
+        leading: LogoApp(
+          size: 50,
+        ),
+        title: const Text(
+          "RAYEK",
+          style: TextStyle(
+              letterSpacing: 10,
+              color: BtColor,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic),
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const CategorieWidgts(),
+          // const CategorieWidgts(),
 
           //
           StreamBuilder<QuerySnapshot>(
