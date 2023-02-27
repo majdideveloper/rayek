@@ -16,6 +16,9 @@
   <a href="https://github.com/majdideveloper/rayek/issues/">
     <img src="https://img.shields.io/github/issues/majdideveloper/rayek" alt="open issues" />
   </a>
+  <a href="https://github.com/majdideveloper/rayek/issues-pr/">
+    <img src="https://img.shields.io/github/issues-pr/cdnjs/cdnjs.svg?style=flat" alt="pull request" />
+  </a>
 </p>
    
 <h4>
