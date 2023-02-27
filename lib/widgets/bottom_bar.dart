@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rayek_v001/providers/app_provider.dart';
 
-import 'package:rayek_v001/screens/home/home_screen.dart';
-import 'package:rayek_v001/screens/profile/profile_screen.dart';
-import 'package:rayek_v001/utils/palette.dart';
 import 'package:rayek_v001/widgets/botton_nav_bar.dart';
 
 class BottomBar extends StatelessWidget {

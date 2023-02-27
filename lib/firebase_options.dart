@@ -69,7 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '466245152970',
     projectId: 'rayek-001',
     storageBucket: 'rayek-001.appspot.com',
-    iosClientId: '466245152970-9q6c3jbsfo8d193b8krodrduaeeump6f.apps.googleusercontent.com',
+    iosClientId:
+        '466245152970-9q6c3jbsfo8d193b8krodrduaeeump6f.apps.googleusercontent.com',
     iosBundleId: 'com.example.rayekV001',
   );
 }

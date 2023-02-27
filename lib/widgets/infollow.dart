@@ -27,7 +27,7 @@ class InfollowButton extends StatelessWidget {
             color: BgColor,
           ),
           smallPaddingVer,
-          Text('Infollow', style: lightStyle),
+          Text('Unfollow', style: lightStyle),
         ],
       ),
     );

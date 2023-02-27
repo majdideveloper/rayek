@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 
+//curveclipper for profile screen design
+
 class CurveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

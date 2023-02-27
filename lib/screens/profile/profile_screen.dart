@@ -23,7 +23,7 @@ import 'package:rayek_v001/widgets/logout_buttom.dart';
 import '../../models/question.dart';
 import '../../models/user.dart';
 import '../../resources/auth_methods.dart';
-import '../auth/welcome_screen.dart';
+
 import '../home/widget/post_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool followUser = false;
   int numberFollowers = 0;
 
-  // function pick image from gallory
+  // function pick image from gallery
   Future pickImage() async {
     try {
       tempImg = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
 
-                    //3rd child phot pprofile
+                    //3rd child photo profile
                     Positioned(
                       bottom: 5,
                       child: Stack(
@@ -125,7 +125,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fit: BoxFit.cover,
                             )),
                           ),
-                          //4d child icon add pictur
+
+                          //4d child icon add/update pictur
 
                           Visibility(
                             visible: widget.user == null,

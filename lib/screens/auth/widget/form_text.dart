@@ -115,7 +115,7 @@ class MyWidget extends StatelessWidget {
         ),
         fillColor: Colors.grey,
 
-        hintText: "Email/Mobile",
+        hintText: "Email",
 
         //make hint text
         hintStyle: TextStyle(
@@ -126,7 +126,7 @@ class MyWidget extends StatelessWidget {
         ),
 
         //create lable
-        labelText: 'Email/Mobile',
+        labelText: 'Email',
         //lable style
         labelStyle: TextStyle(
           color: Colors.grey,

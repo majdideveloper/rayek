@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:rayek_v001/screens/auth/auth.dart';
-import 'package:rayek_v001/screens/auth/widget/form_text.dart';
-import 'package:rayek_v001/screens/home/home_screen.dart';
-import 'package:rayek_v001/utils/utils.dart';
 
-import '../../resources/auth_methods.dart';
+import 'package:rayek_v001/utils/utils.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/logo_app.dart';
 

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rayek_v001/providers/app_provider.dart';
 import 'package:rayek_v001/providers/user_provider.dart';
-import 'package:rayek_v001/screens/home/home_screen.dart';
 import 'package:rayek_v001/utils/palette.dart';
 import 'package:rayek_v001/widgets/bottom_bar.dart';
 

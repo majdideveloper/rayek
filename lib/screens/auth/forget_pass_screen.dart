@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:rayek_v001/screens/auth/auth.dart';
-import 'package:rayek_v001/screens/auth/reset_pass_screen.dart';
-import 'package:rayek_v001/screens/auth/widget/form_text.dart';
-import 'package:rayek_v001/screens/home/home_screen.dart';
+
 import 'package:rayek_v001/utils/utils.dart';
 
 import '../../resources/auth_methods.dart';
@@ -56,7 +54,7 @@ class _ForgerPassScreenState extends State<ForgerPassScreen> {
               const Padding(
                 padding: EdgeInsets.only(left: 40, right: 50),
                 child: Text(
-                  'Don\'t worry!! It happens.Please enter the adress associated with your account.',
+                  'Don\'t worry!! It happens.Please enter the address associated with your account.',
                   style: mediumStyle,
                 ),
               ),
