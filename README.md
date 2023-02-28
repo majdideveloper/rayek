@@ -69,13 +69,12 @@ If you have a suggestion that would make this better, please fork the repo and c
 3. Commit your Changes (git commit -m 'Add some Rayek')
 4. Push to the Branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
-## contributors
+## Contributors
 
 <div align="center">
  <a href ="https://www.linkedin.com/in/aribimajdi/">
    <img src="assets/images/Majdi.png" alt="majdi" width="200" height="auto" />
  </a>
-
   <a href="https://www.linkedin.com/in/ou13hana/">
     <img src="assets/images/hana.png" alt="hana" width="200" height="auto" />
   </a>
