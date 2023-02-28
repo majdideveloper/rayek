@@ -38,6 +38,7 @@
 <!-- Introduction-->
 
 
+
 ## Introduction:
 
 link apk 
@@ -58,7 +59,7 @@ gif screen shots
 ## Related projects
 facebook polls pic
 Qoura pic 
-## Contribute
+## Contribution
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
@@ -68,3 +69,11 @@ If you have a suggestion that would make this better, please fork the repo and c
 3. Commit your Changes (git commit -m 'Add some Rayek')
 4. Push to the Branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
+## contributors
+
+<div align="center">
+ <a href ="https://www.linkedin.com/in/aribimajdi/">
+ <img src="assets/images/majdi.png" alt="majdi" width="200" height="auto" />
+ </a>
+  <a href=" https://www.linkedin.com/in/ou13hana/"><img src="assets/images/hana.png" alt="majdi" width="200" height="auto" /></a>
+</div>
