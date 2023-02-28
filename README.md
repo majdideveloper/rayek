@@ -32,9 +32,7 @@
   </h4>
 </div>
 
-<a href="https://github.com/majdideveloper/rayek/github-stats">
-<img src="https://github.com/majdideveloper/rayek//github-stats/blob/master/generated/overview.svg#gh-light-mode-only" />
-</a>
+
 
 <br />
 <!-- Introduction-->
