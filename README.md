@@ -73,7 +73,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 <div align="center">
  <a href ="https://www.linkedin.com/in/aribimajdi/">
- <img src="assets/images/majdi.png" alt="majdi" width="200" height="auto" />
+ <img src="assets/images/Majdi.png" alt="majdi" width="200" height="auto" />
  </a>
-  <a href=" https://www.linkedin.com/in/ou13hana/"><img src="assets/images/hana.png" alt="majdi" width="200" height="auto" /></a>
+  <a href=" https://www.linkedin.com/in/ou13hana/"><img src="assets/images/hana.png" alt="hana" width="200" height="auto" /></a>
 </div>
