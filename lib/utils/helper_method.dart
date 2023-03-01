@@ -150,8 +150,6 @@ void showPost(BuildContext context, PostQuestion question) {
                       Text(
                         question.question,
                         style: boldTitleStyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
                       ),
                       smallPaddingHor,
                     ],

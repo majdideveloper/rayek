@@ -103,7 +103,7 @@ class _AddNewPostState extends State<AddNewPost> {
                         }
                       } else {
                         alertDialog(context,
-                            "Please make sure your question is at least 10 letters long and includes a selected categoryand image  with a minimum of two possible answers. \n Thank you for your attention to this matter.\n Please revise your question accordingly.");
+                            "Please make sure your question is at least 10 letters long and includes a selected category and image  with a minimum of two possible answers. \n Thank you for your attention to this matter.\n Please revise your question accordingly.");
                       }
                     },
                     child: const Text(
