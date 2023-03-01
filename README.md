@@ -41,8 +41,13 @@
 
 ## Introduction:
 
-link apk 
-link blog
+<div align="center">
+
+  <img src="assets/images/Rayek.png" alt="QR code" width="150" height="auto" />
+
+
+</div>
+
 
 ## :wrench: Instalation:
 Clone the repo
