@@ -43,7 +43,7 @@
 
 <div align="center">
 
-  <img src="assets/images/Rayek.png" alt="QR code" width="150" height="auto" />
+  <img src="assets/images/Rayek.png" alt="QR code" width="250" height="auto" />
 
 
 </div>
