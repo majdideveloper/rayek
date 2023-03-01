@@ -71,7 +71,7 @@ class _AddNewPostState extends State<AddNewPost> {
                         // });
                         showLoadingDialog(context,
                             'https://lottie.host/3fbe4e60-14cc-4792-9e41-e927020b3ee2/BKmG5z7oRW.json');
-                        // 'https://assets7.lottiefiles.com/packages/lf20_qqu8eybe.json'
+
                         String res = await FirestoreMethods().uploadQuestion(
                           question: _controllerQuestion.text,
                           file: Uint8List.fromList(
@@ -156,9 +156,7 @@ class _AddNewPostState extends State<AddNewPost> {
                 smallPaddingHor,
 
                 //4rd child category
-                // Align(
-                //     alignment: Alignment.centerLeft,
-                //     child: Text('Tap to chose your Category!')),
+
                 Container(
                   //color: Colors.grey.withOpacity(0.2),
                   width: double.infinity,
@@ -194,6 +192,7 @@ class _AddNewPostState extends State<AddNewPost> {
 
                 smallPaddingHor,
                 // 5d child add pick image
+                //icon image hiden when chose image
                 InkWell(
                   onTap: () async {
                     await pickImage();
@@ -217,7 +216,9 @@ class _AddNewPostState extends State<AddNewPost> {
                   ),
                 ),
                 meduimPaddingHor,
+
                 //6d child answers
+                //text field save the answer in list an clear after tab
                 Row(
                   children: const [
                     Icon(
@@ -266,7 +267,7 @@ class _AddNewPostState extends State<AddNewPost> {
                                 provider.removeResponce(index);
                                 print(provider.getListResponses);
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.delete_forever_rounded,
                                 color: BtColor,
                               ),
@@ -277,14 +278,15 @@ class _AddNewPostState extends State<AddNewPost> {
               ],
             ),
           ),
+          //loading box to bloc all application with annimatoion loading
           _isLoading
               ? Container(
                   color: Colors.black.withOpacity(0.5),
-                  child: Center(
+                  child: const Center(
                     child: CircularProgressIndicator(),
                   ),
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ],
       ),
     );

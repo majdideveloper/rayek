@@ -4,7 +4,7 @@ import 'package:rayek_v001/utils/utils.dart';
 class InfollowButton extends StatelessWidget {
   final void Function() onPressed;
 
-  InfollowButton({
+  const InfollowButton({
     Key? key,
     required this.onPressed,
   }) : super(key: key);
@@ -21,7 +21,7 @@ class InfollowButton extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        children: const [
           Icon(
             Icons.favorite,
             color: BgColor,

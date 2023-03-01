@@ -9,15 +9,18 @@ import 'package:rayek_v001/utils/utils.dart';
 
 import '../models/question.dart';
 
+//  goto context next page
 void goTo(BuildContext context, Widget nextPage) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => nextPage));
 }
 
+//go to page and forget the prev
 void goToAndForget(BuildContext context, Widget nextPage) {
   Navigator.pushAndRemoveUntil(context,
       MaterialPageRoute(builder: (context) => nextPage), (route) => false);
 }
 
+// snack bar method
 void showSnackBar(BuildContext context, String text) {
   final snackBar = SnackBar(
       backgroundColor: BtColor,
@@ -27,6 +30,7 @@ void showSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 
+// alert show dialog with message and ok button
 void alertDialog(BuildContext context, String message) {
   AlertDialog alert = AlertDialog(
     title: const Text("Alert", style: H3Style),
@@ -51,6 +55,7 @@ void alertDialog(BuildContext context, String message) {
     },
   );
 }
+//show dilague for delee pos with 2 button cancel and ok with message
 
 void alertDialogDeletePost(BuildContext context, String message,
     {void Function()? onPressed}) {
@@ -79,6 +84,7 @@ void alertDialogDeletePost(BuildContext context, String message,
   );
 }
 
+// show loading dialge it bloc all the app when loading
 void showLoadingDialog(BuildContext context, String url) {
   showDialog(
     context: context,

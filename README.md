@@ -41,7 +41,8 @@
 
 ## Introduction:
 This project is aimed at creating a social media platform to conduct surveys and gather insights into the target audience. The main problem the project intended to solve is the lack of effective and efficient methods for companies, organizations, and individuals to gather feedback and insights from their target audience.
-to Install the application in your phone scane the QRcode bellow 
+<br>
+To install the application on your phone, simply scan the QR code below.
 <div align="center">
   <img src="assets/images/Rayek.png" alt="QR code" width="250" height="auto" />
 </div>

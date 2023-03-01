@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: Icon(Icons.arrow_back),
+                          icon: const Icon(Icons.arrow_back),
                           color: Colors.white,
                         ),
                       ),
@@ -209,6 +209,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // if current usser log out
                 // else follow unfflow button
                 smallPaddingHor,
+                //logOutButton
                 widget.user == null
                     ? LogOutButton(
                         onPressed: () async {
@@ -217,7 +218,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           goToAndForget(context, const LoginScreen());
                         },
                         text: 'LogOut',
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.logout_rounded,
                           color: BtColor,
                         ),
@@ -235,7 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               });
                             },
                             text: 'Follow',
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.favorite_border,
                               color: BtColor,
                             ),

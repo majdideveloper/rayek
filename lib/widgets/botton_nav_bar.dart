@@ -23,7 +23,7 @@ class BottomBarNav extends StatelessWidget {
       /* Your custom animation controller goes here */
       speedDialChildren: <SpeedDialChild>[
         SpeedDialChild(
-          child: Icon(Icons.home),
+          child: const Icon(Icons.home),
           foregroundColor: Colors.white,
           backgroundColor: BtColor,
           // label: 'Let\'s go to home!',
@@ -33,7 +33,7 @@ class BottomBarNav extends StatelessWidget {
           closeSpeedDialOnPressed: true,
         ),
         SpeedDialChild(
-          child: Icon(Icons.search),
+          child: const Icon(Icons.search),
           foregroundColor: Colors.white,
           backgroundColor: Colors.blueAccent,
           // label: 'search!',
@@ -53,7 +53,7 @@ class BottomBarNav extends StatelessWidget {
           },
         ),
         SpeedDialChild(
-          child: Icon(Icons.design_services),
+          child: const Icon(Icons.design_services),
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue[900],
           // label: 'Let\'s write a post!',
@@ -88,10 +88,10 @@ class SpeedDialMenu extends StatelessWidget {
       isMainFABMini: true,
       mainMenuFloatingActionButton: MainMenuFloatingActionButton(
           mini: false,
-          child: Icon(Icons.menu),
+          child: const Icon(Icons.menu),
           onPressed: () {},
           backgroundColor: BtColor,
-          closeMenuChild: Icon(Icons.close),
+          closeMenuChild: const Icon(Icons.close),
           closeMenuForegroundColor: BgColor,
           closeMenuBackgroundColor: DarkText),
       floatingActionButtonWidgetChildren: <FloatingActionButton>[

@@ -75,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   FirebaseFirestore.instance.collection("users").snapshots(),
               builder: ((context, snapshot) {
                 return (snapshot.connectionState == ConnectionState.waiting)
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
                     : Flexible(
@@ -126,7 +126,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ),
                             );
                           }
-                          return SizedBox();
+                          return const SizedBox();
                         }),
                       ));
               }))

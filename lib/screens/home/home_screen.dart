@@ -1,18 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rayek_v001/models/question.dart';
-import 'package:rayek_v001/resources/auth_methods.dart';
-import 'package:rayek_v001/screens/auth/auth.dart';
-import 'package:rayek_v001/screens/home/widget/categorie_widget.dart';
 import 'package:rayek_v001/screens/home/widget/post_widget.dart';
 
 import 'package:rayek_v001/utils/utils.dart';
 import 'package:rayek_v001/widgets/logo_app.dart';
-
-import '../profile/profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar
       appBar: AppBar(
         backgroundColor: BgColor,
         centerTitle: true,
@@ -40,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           // const CategorieWidgts(),
 
-          //
+          //synchronise data in time
           StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("questions")
@@ -48,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                   .snapshots(),
               builder: ((context, snapshot) {
                 return (snapshot.connectionState == ConnectionState.waiting)
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
                     : Flexible(
@@ -59,7 +52,8 @@ class HomeScreen extends StatelessWidget {
                             itemBuilder: ((context, index) {
                               PostQuestion question = PostQuestion.fromSnap(
                                   snapshot.data!.docs[index]);
-
+                              //on tap card of post we will show the entier
+                              // post in show dialog show question with img/oprtion of the poll
                               return InkWell(
                                 onTap: () => showPost(context, question),
                                 child: PostWidget(
