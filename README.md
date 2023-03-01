@@ -40,12 +40,10 @@
 
 
 ## Introduction:
-
+This project is aimed at creating a social media platform to conduct surveys and gather insights into the target audience. The main problem the project intended to solve is the lack of effective and efficient methods for companies, organizations, and individuals to gather feedback and insights from their target audience.
+to Install the application in your phone scane the QRcode bellow 
 <div align="center">
-
   <img src="assets/images/Rayek.png" alt="QR code" width="250" height="auto" />
-
-
 </div>
 
 
@@ -54,7 +52,7 @@ Clone the repo
 ```
 git clone https://github.com/majdideveloper/rayek.git
 ```
-Run with
+Run with 
 ```
 ```
 
@@ -65,6 +63,7 @@ gif screen shots
 facebook polls pic
 Qoura pic 
 ## Contribution
+
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
@@ -74,6 +73,7 @@ If you have a suggestion that would make this better, please fork the repo and c
   3. Commit your Changes ```git commit -m 'Add some Rayek'```
   4. Push to the Branch ```git push origin feature/AmazingFeature```
   5. Open a Pull Request
+
 ## Contributors
 
 <div align="center">
