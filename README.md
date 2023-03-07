@@ -47,22 +47,27 @@ To install the application on your phone, simply scan the QR code below.
   <img src="assets/images/Rayek.png" alt="QR code" width="250" height="auto" />
 </div>
 
+Check out our [landing page](https://ouhana.wixsite.com/rayek) for more information, or read the [blog](https://medium.com/@5004_52812/what-you-need-to-know-about-rayek-social-media-d5514b320d09)
+
 
 ## :wrench: Instalation:
 Clone the repo
 ```
 git clone https://github.com/majdideveloper/rayek.git
 ```
-Run with 
-```
-```
+
 
 
 ## Usage
-gif screen shots 
+
+<div align="center">
+  <img src="assets/images/s1.png" />
+   <img src="assets/images/s2.png" />
+</div>
+
 ## Related projects
-facebook polls pic
-Qoura pic 
+* facebook polls 
+* Qoura 
 ## Contribution
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
